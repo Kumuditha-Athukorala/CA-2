@@ -1,13 +1,7 @@
-#
-This is the second line of the Demo #Vinit
+OverDrive car selling & maintenance dealers.
 
-06/11/2019
+OverDrive system will store the details of the customers, cars and manufacturers availed by the various customers who have purchased the cars and chosen a subscription.
 
-kabranch added
+The reports generated for the car dealer includes sales reports of indemand cars, cars available, profit and loss margin for the dealer and maintenance subscriptions which are of three types 3 month,6 month and 12 month .
 
-KA phython class
-
-Sample para starts here
-
-This is dsbranch
-Today is 06/11/2019
+The staff is not included in the scope of the system.
