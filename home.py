@@ -27,6 +27,10 @@ while will == "yes":
             cursor.execute('SELECT * FROM dbo.Manufacturer')
             for row in cursor:
                 print(row[1])
+        if c == 2:
+            cursor.execute('SELECT * FROM dbo.Employee')
+            for row in cursor:
+                print(row[1])
 
 
     else:
