@@ -6,15 +6,14 @@ userId = input("")
 print("Enter Password")
 password = input("")
 will="yes"
-while will=="yes":
+while will == "yes":
     if userId=="admin" and password=="admin" :
         dbobj = database();
 
         cursor = dbobj.dbConn();
-        cursor.execute('SELECT * FROM dbo.Incentive')
 
-        for row in cursor:
-            print(row[0])
+
+
 
         print("Welcome to OverDrive Information System.....")
 
@@ -22,9 +21,13 @@ while will=="yes":
         print("1. Manufacturers")
         print("2. Employee")
         print("3. Customers")
-        c = (int)(input("Enter your choice"));
+        print("4. Orders")
+        c = int(input("Enter your choice"));
         if c == 1:
-            print();
+            cursor.execute('SELECT * FROM dbo.Manufacturer')
+            for row in cursor:
+                print(row[1])
+
 
     else:
         print("Invalid credentials");
