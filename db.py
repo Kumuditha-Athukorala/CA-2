@@ -3,7 +3,6 @@ import pyodbc
 class dataBase:
 
     def __init__(self):
-        print("Inside dbConnect")
         self.conn = pyodbc.connect('Driver={SQL Server};'
                               'Server=HP\\SQLEXPRESS;'
                               'Database=Over_Drive;'
