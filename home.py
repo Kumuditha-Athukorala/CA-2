@@ -35,6 +35,10 @@ while will == "yes":
             cursor.execute('SELECT * FROM dbo.Customer')
             for row in cursor:
                 print(row[1])
+        if c == 4:
+            cursor.execute('SELECT * FROM dbo.Customer_Order')
+            for row in cursor:
+                print(row[1])
 
 
 
