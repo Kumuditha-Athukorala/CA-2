@@ -8,9 +8,8 @@ print("Enter Password")
 password = input("")
 will="yes"
 while will == "yes":
-    if userId=="admin" and password=="admin" :
+    if userId == "admin" and password == "admin" :
         dbobj = database();
-
         cursor = dbobj.dbConn();
         mfg = manufacturer()
         print("Welcome to OverDrive Information System.....")
@@ -22,8 +21,16 @@ while will == "yes":
         print("4. Orders")
         c = int(input("Enter your choice"));
         if c == 1:
+            print("Choose Option:")
+            print("1. View All Manufacturers")
+            print("2. View by name")
 
-            mfg.selectAllManufacturers(cursor)
+            m = int(input("Enter your choice"));
+            if m == 1:
+                mfg.selectAllManufacturers(cursor)
+            elif m == 2:
+                name = input("Enter name of manufacturer. !")
+                mfg.selectBasedOnName(cursor, name);
 
         if c == 2:
             cursor.execute('SELECT * FROM dbo.Employee')
