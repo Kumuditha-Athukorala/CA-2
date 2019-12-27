@@ -1,5 +1,6 @@
 import pyodbc
 from db import dataBase as database
+from customer import Customer
 print("Welcome to OverDrive Information System.....");
 print("Enter User Id")
 userId = input("")
@@ -14,7 +15,7 @@ while will == "yes":
 
 
 
-
+        cust = Customer()
         print("Welcome to OverDrive Information System.....")
 
         print("Choose Option:")
@@ -32,9 +33,7 @@ while will == "yes":
             for row in cursor:
                 print(row[1])
         if c == 3:
-            cursor.execute('SELECT * FROM dbo.Customer')
-            for row in cursor:
-                print(row[1])
+            cust.selectAllCustomers(cursor)
         if c == 4:
             cursor.execute('SELECT * FROM dbo.Customer_Order')
             for row in cursor:
