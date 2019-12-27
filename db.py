@@ -28,4 +28,11 @@ class dataBase:
                            name,
                            addr, eid, phone,id)
 
+    def insertEmp(self, name, desig, dob, pps, salary):
+        with self.conn as cursor:
+            cursor.execute('insert into dbo.Employee (employee_id,employee_name,employee_designation,'
+                           'employee_dob,employee_pps_number,employee_salary) values (concat(\'OVDE\',(next value for dbo.SEQ_EMPLOYEE_ID)),?,?,?,?,?) ',
+                           name,
+                           desig, dob, pps,salary)
+
 

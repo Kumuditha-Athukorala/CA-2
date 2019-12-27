@@ -8,7 +8,7 @@ class employee:
         self.employeeDesignation = ""
         self.employeeDob = ""
         self.employeePps = ""
-        self.employeeSalary = ""
+        self.employeeSalary = 0
 
     def selectAllEmployees(self, cursor):
         cursor.execute('SELECT * FROM dbo.Employee')
@@ -36,3 +36,14 @@ class employee:
                                                                          str(row[6])))
         else:
             print("No employee found with that name.!")
+
+    def addEmployee(self, cursor):
+
+        db = database()
+        self.employeeName = input("Enter name of employee.")
+        self.employeeDesignation = input("Enter employee designation.")
+        self.employeeDob = input("Enter employee dob.")
+        self.employeePps = input("Enter employee pps number.")
+        self.employeeSalary = int(input("Enter employee salary")) ;
+        db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary)
+        print("Record inserted successfully in Employee table.!")
