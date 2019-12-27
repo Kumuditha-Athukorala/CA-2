@@ -25,6 +25,7 @@ while will == "yes":
             print("1. View All Manufacturers")
             print("2. View by name")
             print("3. Add Manufacturer data")
+            print("3. Update Manufacturer data")
 
             m = int(input("Enter your choice"));
             if m == 1:
