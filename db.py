@@ -10,7 +10,8 @@ class dataBase:
                               )
 
     def dbConn(self):
-            print()
+           cursor=self.conn.cursor()
+           return cursor;
 
 
     def insertMf(self, name, addr, eid, phone):
