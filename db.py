@@ -35,4 +35,11 @@ class dataBase:
                            name,
                            desig, dob, pps,salary)
 
+    def updateEmp(self, name, desig, dob, pps,salary,id):
+        with self.conn as cursor:
+            cursor.execute('update dbo.Employee set employee_name=?,employee_designation=?,'
+                           'employee_dob=?,employee_pps_number=?,employee_salary=? where employee_id=? ',
+                           name,
+                           desig, dob, pps,salary,id)
+
 

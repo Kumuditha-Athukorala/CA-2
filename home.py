@@ -54,7 +54,7 @@ while will == "yes":
             elif m == 3:
                 emp.addEmployee(cursor)
             elif m == 4:
-                mfg.updateManufacturer(cursor)
+                emp.updateEmployee(cursor)
 
 
     else:
