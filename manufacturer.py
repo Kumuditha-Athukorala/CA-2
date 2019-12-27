@@ -1,4 +1,6 @@
 import pyodbc
+from db import dataBase as database
+
 class manufacturer:
 
     def __init__(self):
@@ -37,13 +39,14 @@ class manufacturer:
 
     def addManufacturer(self, cursor):
 
+        db = database()
         self.manufacturerName = input("Enter name of manufacturer.")
         self.manufacturerAddr = input("Enter manufacturer address.")
         self.manufacturerEmail = input("Enter manufacturer email.")
         self.manufacturerPhno = input("Enter manufacturer contact number.")
-        cursor.execute('insert into dbo.manufacturer (manufacturer_id,manufacturer_name,manufacturer_address,'
-                       'manufacturer_email,manufacturer_phone) values (next value for dbo.SEQ_MANUFACTURER_ID,?,?,?,?) ',self.manufacturerName,
-                       self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
-        print(cursor.rowcount, "Record inserted successfully into Manufacturer table")
+        db.insertMf(self.manufacturerName,self.manufacturerAddr,self.manufacturerEmail,self.manufacturerPhno)
+        print("Record inserted successfully in Manufacturer table.!")
+
+
 
 

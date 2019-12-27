@@ -42,13 +42,13 @@ while will == "yes":
 
     else:
         print("Invalid credentials");
-        will = input("do you want to continue ?")
-        if will =='yes':
-            print("Enter User Id")
-            userId = input("")
-            print("Enter Password")
-            password = input("")
-        else:
+    will = input("do you want to continue ?")
+    if will =='yes':
+        print("Enter User Id")
+        userId = input("")
+        print("Enter Password")
+        password = input("")
+    else:
             break;
 
 
