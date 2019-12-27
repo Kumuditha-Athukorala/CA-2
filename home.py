@@ -33,7 +33,15 @@ while will == "yes":
             for row in cursor:
                 print(row[1])
         if c == 3:
-            cust.searchAllCustomers(cursor)
+            print("Choose Customer related option")
+            print("1. Search All Cutomers")
+            print("2. Search Customers by Name")
+            userInput = int(input("Please Enter the selected option"))
+
+            if(userInput == 1):
+                cust.searchAllCustomers(cursor)
+            if(userInput == 2):
+                cust.searchCustomerByName(cursor)
         if c == 4:
             cursor.execute('SELECT * FROM dbo.Customer_Order')
             for row in cursor:
