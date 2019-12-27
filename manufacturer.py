@@ -60,6 +60,11 @@ class manufacturer:
 
         if len(data) != 0:
             print("Manufacturer found with name entered.! ")
+            print(dash)
+            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "Phone-number"))
+            print(dash)
+            for row in data:
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
             for row in data:
                 self.manufacturerId = row[0]
             db = database()
