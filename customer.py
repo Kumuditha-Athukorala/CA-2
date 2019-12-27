@@ -35,3 +35,11 @@ class Customer:
         else:
             print("No Customer found with that name.!")
 
+    def addCustomer(self, databse,cursor):
+
+        self.__customerName = input("Enter name of Customer.")
+        self.__customerAddress = input("Enter Customer Address.")
+        self.__customerPhoneNumber = input("Enter Customer Phone Number.")
+        databse.insertCustomerRecord(self.__customerName,self.__customerAddress,self.__customerPhoneNumber)
+        print("Customer Record added successfully..!")
+
