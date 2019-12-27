@@ -24,13 +24,15 @@ while will == "yes":
             print("Choose Option:")
             print("1. View All Manufacturers")
             print("2. View by name")
+            print("3. Add Manufacturer data")
 
             m = int(input("Enter your choice"));
             if m == 1:
                 mfg.selectAllManufacturers(cursor)
             elif m == 2:
-                name = input("Enter name of manufacturer. !")
-                mfg.selectBasedOnName(cursor, name);
+                mfg.selectBasedOnName(cursor)
+            elif m == 3:
+                mfg.addManufacturer(cursor)
 
         if c == 2:
             cursor.execute('SELECT * FROM dbo.Employee')
