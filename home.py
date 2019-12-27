@@ -48,7 +48,7 @@ while will == "yes":
 
             m = int(input("Enter your choice"));
             if m == 1:
-                mfg.selectAllManufacturers(cursor)
+                emp.selectAllEmployees(cursor)
             elif m == 2:
                 mfg.selectBasedOnName(cursor)
             elif m == 3:
