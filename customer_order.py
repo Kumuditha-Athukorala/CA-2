@@ -19,3 +19,20 @@ class CustomerOrder:
         print(dash)
         for row in cursor:
             print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),row[4], row[5]))
+
+    def searchOrderByCustomerId(self,cursor):
+
+        customerId = input("Please enter the Customer Id")
+        sql =  'SELECT * FROM Customer_Order co WHERE co.customer_id =?'
+        cursor.execute(sql,customerId)
+        resultSet = cursor.fetchall()
+
+        if(len(resultSet) != 0):
+            dash = '-'*200
+            print(dash)
+            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Customer Order Id", "Order Date", "Order Delivery Date", "Selling Price","Customer Id", "Employee Id" ))
+            print(dash)
+            for row in resultSet:
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),row[4], row[5]))
+        else:
+            print("No Customer Order with that Customer ID!")

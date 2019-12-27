@@ -44,11 +44,17 @@ while will == "yes":
                 cust.searchAllCustomers(cursor)
             if(userInput == 2):
                 cust.searchCustomerByName(cursor)
+
         if c == 4:
-            customerOrder.serachAllCustomerOrders(cursor);
+            print("Choose Customer Order related option")
+            print("1. Search All Cutomer Orders")
+            print("2. Search Customer Orders by Customer Id")
+            userInput = int(input("Please Enter the selected option"))
 
-
-
+            if(userInput == 1):
+                customerOrder.serachAllCustomerOrders(cursor)
+            if(userInput == 2):
+                customerOrder.searchOrderByCustomerId(cursor)
     else:
         print("Invalid credentials");
         will = input("do you want to continue ?")
