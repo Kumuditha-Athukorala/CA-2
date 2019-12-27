@@ -21,7 +21,9 @@ while will == "yes":
         print("2. Employee")
         print("3. Customers")
         print("4. Orders")
+        print("5. Incentive")
         c = int(input("Enter your choice"));
+        
         if c == 1:
             print("Choose Option:")
             print("1. View All Manufacturers")
@@ -55,6 +57,20 @@ while will == "yes":
                 emp.addEmployee(cursor)
             elif m == 4:
                 emp.updateEmployee(cursor)
+
+        if c == 5:
+            print("Choose Option:")
+            print("1. View All Incentives in last 1 month")
+            print("2. View Incentive by name")
+            print("3. Add Incentive ")
+
+            m = int(input("Enter your choice"));
+            if m == 1:
+                emp.selectAllIncentive(cursor)
+            elif m == 2:
+                emp.selectBasedOnName(cursor)
+            elif m == 3:
+                emp.addIncentive(cursor)
 
 
     else:
