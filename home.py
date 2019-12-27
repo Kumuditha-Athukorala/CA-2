@@ -1,6 +1,7 @@
 import pyodbc
 from db import dataBase as database
 from manufacturer import manufacturer
+from employee import employee
 print("Welcome to OverDrive Information System.....");
 print("Enter User Id")
 userId = input("")
@@ -12,6 +13,7 @@ while will == "yes":
         dbobj = database();
         cursor = dbobj.dbConn();
         mfg = manufacturer()
+        emp = employee()
         print("Welcome to OverDrive Information System.....")
 
         print("Choose Option:")
@@ -25,7 +27,7 @@ while will == "yes":
             print("1. View All Manufacturers")
             print("2. View by name")
             print("3. Add Manufacturer data")
-            print("3. Update Manufacturer data")
+            print("4. Update Manufacturer data")
 
             m = int(input("Enter your choice"));
             if m == 1:
@@ -38,9 +40,21 @@ while will == "yes":
                 mfg.updateManufacturer(cursor)
 
         if c == 2:
-            cursor.execute('SELECT * FROM dbo.Employee')
-            for row in cursor:
-                print(row[1])
+            print("Choose Option:")
+            print("1. View All Employees")
+            print("2. View Employee by name")
+            print("3. Add Employee data")
+            print("4. Update Employee data")
+
+            m = int(input("Enter your choice"));
+            if m == 1:
+                mfg.selectAllManufacturers(cursor)
+            elif m == 2:
+                mfg.selectBasedOnName(cursor)
+            elif m == 3:
+                mfg.addManufacturer(cursor)
+            elif m == 4:
+                mfg.updateManufacturer(cursor)
 
 
     else:
