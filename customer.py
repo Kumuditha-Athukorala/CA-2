@@ -7,7 +7,7 @@ class Customer:
         self.__customerAddress=""
         self.__customerPhoneNumber=""
 
-    def selectAllCustomers(self,cursor):
+    def searchAllCustomers(self,cursor):
         cursor.execute('SELECT * FROM dbo.Customer')
         dash = '-' * 250
         print(dash)
