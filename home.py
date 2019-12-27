@@ -50,7 +50,7 @@ while will == "yes":
             if m == 1:
                 emp.selectAllEmployees(cursor)
             elif m == 2:
-                mfg.selectBasedOnName(cursor)
+                emp.selectBasedOnName(cursor)
             elif m == 3:
                 mfg.addManufacturer(cursor)
             elif m == 4:
