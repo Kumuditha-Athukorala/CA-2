@@ -2,6 +2,7 @@ import pyodbc
 from db import dataBase as database
 from manufacturer import manufacturer
 from employee import employee
+from incentive import incentive
 print("Welcome to OverDrive Information System.....");
 print("Enter User Id")
 userId = input("")
@@ -14,6 +15,7 @@ while will == "yes":
         cursor = dbobj.dbConn();
         mfg = manufacturer()
         emp = employee()
+        inc = incentive()
         print("Welcome to OverDrive Information System.....")
 
         print("Choose Option:")
@@ -23,7 +25,7 @@ while will == "yes":
         print("4. Orders")
         print("5. Incentive")
         c = int(input("Enter your choice"));
-        
+
         if c == 1:
             print("Choose Option:")
             print("1. View All Manufacturers")
@@ -60,13 +62,13 @@ while will == "yes":
 
         if c == 5:
             print("Choose Option:")
-            print("1. View All Incentives in last 1 month")
+            print("1. View Incentives in previous n days")
             print("2. View Incentive by name")
             print("3. Add Incentive ")
 
             m = int(input("Enter your choice"));
             if m == 1:
-                emp.selectAllIncentive(cursor)
+                inc.selectAllIncentive(cursor)
             elif m == 2:
                 emp.selectBasedOnName(cursor)
             elif m == 3:
