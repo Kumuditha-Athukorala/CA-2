@@ -33,6 +33,8 @@ while will == "yes":
                 mfg.selectBasedOnName(cursor)
             elif m == 3:
                 mfg.addManufacturer(cursor)
+            elif m == 4:
+                mfg.updateManufacturer(cursor)
 
         if c == 2:
             cursor.execute('SELECT * FROM dbo.Employee')

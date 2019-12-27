@@ -49,4 +49,31 @@ class manufacturer:
 
 
 
+    def updateManufacturer(self, cursor):
+
+        name = input("Enter name of manufacturer. !")
+        args = ['%' + name + '%']
+
+        cursor.execute('SELECT * FROM dbo.Manufacturer where manufacturer_name like ?', args)
+        dash = '-' * 150
+        data = cursor.fetchall()
+
+        if len(data) != 0:
+            for row in data:
+                self.manufacturerId = row[0]
+            db = database()
+            self.manufacturerName = input("Enter name of manufacturer.")
+            self.manufacturerAddr = input("Enter manufacturer address.")
+            self.manufacturerEmail = input("Enter manufacturer email.")
+            self.manufacturerPhno = input("Enter manufacturer contact number.")
+            db.updateMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
+        else:
+            print("No manufacturer found with that name.!")
+
+
+
+        print("Record inserted successfully in Manufacturer table.!")
+
+
+
 
