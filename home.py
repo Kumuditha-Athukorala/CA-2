@@ -33,7 +33,7 @@ while will == "yes":
             for row in cursor:
                 print(row[1])
         if c == 3:
-            cust.selectAllCustomers(cursor)
+            cust.searchAllCustomers(cursor)
         if c == 4:
             cursor.execute('SELECT * FROM dbo.Customer_Order')
             for row in cursor:
