@@ -39,6 +39,7 @@ while will == "yes":
             print("1. Search All Cutomers")
             print("2. Search Customers by Name")
             print("3. Add New Customer")
+            print("4. Update Customer Record")
             userInput = int(input("Please Enter the selected option"))
 
             if(userInput == 1):
@@ -47,6 +48,8 @@ while will == "yes":
                 cust.searchCustomerByName(cursor)
             if(userInput == 3):
                 cust.addCustomer(dbobj,cursor)
+            if(userInput == 4):
+                cust.updateCustomer(dbobj, cursor)
 
         if c == 4:
             print("Choose Customer Order related option")
