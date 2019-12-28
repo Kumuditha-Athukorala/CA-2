@@ -22,6 +22,6 @@ class dataBase:
 
     def updateCustomerRecord(self, id,name, address, phoneNumber):
         with self.conn as cursor:
-            cursor.execute('UPDATE dbo.Customer SET customer_name=?,customer_address=?,'
-                           'customer_phone=? WHERE customer_id=? ',
-                           name, address, phoneNumber, id)
+            sql = 'UPDATE dbo.Customer SET customer_name=?,customer_address=?, ' \
+                  'customer_phone=? WHERE customer_id=? ';
+            cursor.execute(sql, name, address, phoneNumber, id)
