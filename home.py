@@ -55,12 +55,15 @@ while will == "yes":
             print("Choose Customer Order related option")
             print("1. Search All Cutomer Orders")
             print("2. Search Customer Orders by Customer Id")
+            print("3. Search Customer Orders by Related Employee Id")
             userInput = int(input("Please Enter the selected option"))
 
             if(userInput == 1):
                 customerOrder.serachAllCustomerOrders(cursor)
             if(userInput == 2):
                 customerOrder.searchOrderByCustomerId(cursor)
+            if(userInput == 3):
+                customerOrder.searchOrderByEmpolyeeId(cursor)
     else:
         print("Invalid credentials");
         will = input("do you want to continue ?")
