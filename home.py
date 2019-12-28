@@ -70,7 +70,7 @@ while will == "yes":
             if m == 1:
                 inc.selectAllIncentive(cursor)
             elif m == 2:
-                emp.selectBasedOnName(cursor)
+                inc.selectBasedOnName(cursor)
             elif m == 3:
                 emp.addIncentive(cursor)
 
