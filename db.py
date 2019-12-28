@@ -16,9 +16,9 @@ class dataBase:
 
     def insertCustomerRecord(self, name, address, phoneNumber):
         with self.conn as cursor:
-            cursor.execute('INSERT INTO dbo.Customer (customer_id,customer_name,customer_address,customer_phone)'
-                           ' VALUES (CONCAT(\'OVDC\',NEXT VALUE FOR SEQ_CUSTOMER_ID),?,?,?)',
-                           name, address, phoneNumber)
+            sql = 'INSERT INTO dbo.Customer (customer_id,customer_name,customer_address,customer_phone) ' \
+                  'VALUES (CONCAT(\'OVDC\',NEXT VALUE FOR SEQ_CUSTOMER_ID),?,?,?)'
+            cursor.execute(sql, name, address, phoneNumber)
 
     def updateCustomerRecord(self, id,name, address, phoneNumber):
         with self.conn as cursor:
