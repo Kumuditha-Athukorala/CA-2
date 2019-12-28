@@ -55,3 +55,26 @@ class incentive:
         else:
                 print("No employee found with that name.!")
 
+    def addIncentive(self, cursor):
+        name = input("Enter name of employee. !")
+        args = ['%' + name + '%']
+
+        cursor.execute('SELECT * FROM dbo.Employee where employee_name like ?', args)
+        dash = '-' * 180
+        data = cursor.fetchall()
+        if len(data) != 0:
+                print(dash)
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Designation", "DOB", "PPS",
+                                                                         "Salary"))
+                print(dash)
+                for row in data:
+                    print(
+                        '{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[4], row[5], str(row[6])))
+                empid = input("Enter employee id from above.!")
+
+                db = database()
+                incentive_date = input("Enter incentive date")
+                db.insertIncentive(empid,incentive_date)
+
+        else:
+                print("No employee found with that name.!")

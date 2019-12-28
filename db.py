@@ -42,6 +42,14 @@ class dataBase:
                            name,
                            desig, dob, pps,salary,id)
 
+    def insertIncentive(self, id, date):
+
+        with self.conn as cursor:
+            cursor.execute('insert into dbo.Incentive (incentive_id,incentive_date,'
+                           'employee_id) values (next value for dbo.SEQ_INCENTIVE_ID,?,?) ',
+                           date, id)
+
+
 
 
 
