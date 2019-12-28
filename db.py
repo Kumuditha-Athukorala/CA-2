@@ -33,3 +33,8 @@ class dataBase:
                   'customer_id,employee_id) VALUES (NEXT VALUE FOR SEQ_CUSTOMER_ORDER_ID,?,?,?,?,?)'
             cursor.execute(sql, orderDate, deliveryDate, sellingPrice, customerId, employeeId)
 
+    def updateCustomerOrderRecord(self, orderId, orderDate, deliveryDate, sellingPrice, customerId, employeeId):
+        with self.conn as cursor:
+            sql = 'UPDATE dbo.Customer_Order SET customer_order_date=?,customer_order_delivery_date=?, ' \
+                  'customer_order_selling_price=?, customer_id=?, employee_id=?  WHERE customer_order_id=? ';
+            cursor.execute(sql, orderDate, deliveryDate, sellingPrice, customerId, employeeId, orderId)

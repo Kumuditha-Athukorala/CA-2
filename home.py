@@ -57,6 +57,7 @@ while will == "yes":
             print("2. Search Customer Orders by Customer Id")
             print("3. Search Customer Orders by Related Employee Id")
             print("4. Add New Customer Order Record")
+            print("5. Update Customer Order Record")
             userInput = int(input("Please Enter the selected option"))
 
             if(userInput == 1):
@@ -67,6 +68,8 @@ while will == "yes":
                 customerOrder.searchOrderByEmpolyeeId(cursor)
             if(userInput == 4):
                 customerOrder.addCustomerOrder(dbobj,cursor)
+            if(userInput == 5):
+                customerOrder.updateCustomerOrder(dbobj, cursor)
     else:
         print("Invalid credentials");
         will = input("do you want to continue ?")

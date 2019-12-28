@@ -75,6 +75,26 @@ class CustomerOrder:
         print("Customer Order record added successfully..!")
 
 
+    def updateCustomerOrder(self,database, cursor):
+
+        customer = Customer()
+        customer.searchCustomerByName(cursor)
+
+        customerOrder = CustomerOrder()
+        customerOrder.searchOrderByCustomerId(cursor)
+
+        self.__customerOderId = input("Please Enter the Customer Order Id which needs to be updated")
+        self.__customerOderDate = input("Please Enter the New or Same Date of Order Placed.")
+        self.__customerOrderDeliveryDate = input("Please Enter the New or Same Date of Order Delivered.")
+        self.__customerOrderSellingPrice = int(input("Please Enter the New or Same Selling Price."))
+        self.__customerId = input("Please Enter the New or Same Customer Id.")
+        self.__employeeId = input("Please Enter the New or Same Employee Id")
+
+        database.updateCustomerOrderRecord(self.__customerOderId,self.__customerOderDate,self.__customerOrderDeliveryDate,
+                                           self.__customerOrderSellingPrice,self.__customerId,self.__employeeId)
+        print("Customer Order Record Updated Successfully.!")
+
+
 
 
 
