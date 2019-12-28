@@ -25,3 +25,11 @@ class dataBase:
             sql = 'UPDATE dbo.Customer SET customer_name=?,customer_address=?, ' \
                   'customer_phone=? WHERE customer_id=? ';
             cursor.execute(sql, name, address, phoneNumber, id)
+
+    def insertCustomerOrderRecord(self, orderDate, deliveryDate, sellingPrice, customerId, employeeId):
+        with self.conn as cursor:
+            sql = 'INSERT INTO dbo.Customer_Order (customer_order_id,customer_order_date,customer_order_delivery_date,' \
+                  'customer_order_selling_price,' \
+                  'customer_id,employee_id) VALUES (NEXT VALUE FOR SEQ_CUSTOMER_ORDER_ID,?,?,?,?,?)'
+            cursor.execute(sql, orderDate, deliveryDate, sellingPrice, customerId, employeeId)
+
