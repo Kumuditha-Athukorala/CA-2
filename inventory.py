@@ -20,3 +20,15 @@ class Inventory:
         print(dash)
         for row in cursor:
             print('{:<5s}{:>30s}{:>60s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]), str(row[4])))
+
+
+    def addInventoryRecord(self, database, cursor):
+
+        self.__inventoryDate = input("Please Enter the Inventory Date")
+        self.__inventoryStatus = input("Please Enter the Inventory Status")
+        self.__manufacturerOrderId = input("Please Enter the Manufacturer Order Id")
+        self.__customerOrderId = input("Please Enter the Customer Order Id")
+        database.insertInventoryrecord(self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
+        print("Inventory Record added Successfully")
+
+

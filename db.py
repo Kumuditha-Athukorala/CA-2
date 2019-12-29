@@ -38,3 +38,9 @@ class dataBase:
             sql = 'UPDATE dbo.Customer_Order SET customer_order_date=?,customer_order_delivery_date=?, ' \
                   'customer_order_selling_price=?, customer_id=?, employee_id=?  WHERE customer_order_id=? ';
             cursor.execute(sql, orderDate, deliveryDate, sellingPrice, customerId, employeeId, orderId)
+
+    def insertInventoryrecord(self, date, status,manufacturerOrder, customerOrder):
+        with self.conn as cursor:
+            sql = 'INSERT INTO dbo.Inventory (inventory_id, inventory_date, inventory_status,' \
+                  'manufacturer_order_id, customer_order_id) VALUES (NEXT VALUE FOR SEQ_INVENTORY_ID,?,?,?,?)'
+            cursor.execute(sql, date, status, manufacturerOrder, customerOrder)
