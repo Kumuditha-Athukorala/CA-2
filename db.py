@@ -1,5 +1,6 @@
 import pyodbc
 
+
 class dataBase:
 
     def __init__(self):
@@ -74,9 +75,31 @@ class dataBase:
                   'customer_order_selling_price=?, customer_id=?, employee_id=?  WHERE customer_order_id=? ';
             cursor.execute(sql, orderDate, deliveryDate, sellingPrice, customerId, employeeId, orderId)
 
+
     def insertInventoryrecord(self, date, status,manufacturerOrder, customerOrder):
+
+        db = dataBase()
+        if(db.OR(customerOrder)):
+            customerOrder = None
+
         with self.conn as cursor:
             sql = 'INSERT INTO dbo.Inventory (inventory_id, inventory_date, inventory_status,' \
                   'manufacturer_order_id, customer_order_id) VALUES (NEXT VALUE FOR SEQ_INVENTORY_ID,?,?,?,?)'
             cursor.execute(sql, date, status, manufacturerOrder, customerOrder)
+
+    def OR(self,param):
+        if '' == param:
+            return True
+        elif 'null' == param:
+            return True
+        elif 'NULL' == param:
+            return True
+        else:
+            return False
+
+    def updateInventoryRecord(self, id, date, status,manufacturerOrder, customerOrder):
+        with self.conn as cursor:
+            sql = 'UPDATE dbo.Inventory SET inventory_date=?,inventory_status=?, ' \
+                  'manufacturer_order_id=?, customer_order_id=? WHERE inventory_id=? ';
+            cursor.execute(sql, date, status, manufacturerOrder, customerOrder, id)
 
