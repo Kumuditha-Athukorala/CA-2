@@ -80,3 +80,9 @@ class dataBase:
                   'manufacturer_order_id, customer_order_id) VALUES (NEXT VALUE FOR SEQ_INVENTORY_ID,?,?,?,?)'
             cursor.execute(sql, date, status, manufacturerOrder, customerOrder)
 
+    def updateInventoryRecord(self, id, date, status,manufacturerOrder, customerOrder):
+        with self.conn as cursor:
+            sql = 'UPDATE dbo.Inventory SET inventory_date=?,inventory_status=?, ' \
+                  'manufacturer_order_id=?, customer_order_id=? WHERE inventory_id=? ';
+            cursor.execute(sql, date, status, manufacturerOrder, customerOrder, id)
+

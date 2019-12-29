@@ -32,3 +32,17 @@ class Inventory:
         print("Inventory Record added Successfully")
 
 
+    def updateInventoryRecord(self, database, cursor):
+
+        inventory = Inventory()
+        inventory.searchAllInvenrotyRecords(cursor)
+
+        self.__inventoryId = input("Please Enter the Inventory Id which needs to be updated")
+        self.__inventoryDate = input("Please Enter the New or Same Inventory Date")
+        self.__inventoryStatus = input("Please Enter the New or Same Inventory Status")
+        self.__manufacturerOrderId = input("Please Enter the New or Same Manufacture Order Id")
+        self.__customerOrderId = input("Please Enter the New or Same Customer Order Id")
+        database.updateInventoryRecord(self.__inventoryId, self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
+        print("Inventory Record updated Successfully")
+
+

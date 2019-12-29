@@ -131,12 +131,15 @@ while will == "yes":
             print("Choose Inventory related option")
             print("1. Search All Inventory")
             print("2. Add New Inventory Record")
+            print("3. Update Inventory Record")
             userInput = int(input("Please Enter the selected option"))
 
             if (userInput == 1):
                 inventory.searchAllInvenrotyRecords(cursor)
             if (userInput == 2):
                 inventory.addInventoryRecord(dbobj,cursor)
+            if (userInput == 3):
+                inventory.updateInventoryRecord(dbobj,cursor)
                 
     else:
         print("Invalid credentials");
