@@ -125,7 +125,7 @@ while will == "yes":
             elif m == 3:
                 inc.addIncentive(cursor)
 
-        if c==6:
+        if c == 6:
             print("Choose Inventory related option")
             print("1. Search All Inventory")
             print("2. Add New Inventory Record")
@@ -155,7 +155,7 @@ while will == "yes":
             if userInput == 2:
                 carmodel.searchByName(cursor)
             if userInput == 3:
-                carmodel.searchByMfg(dbobj, cursor)
+                carmodel.searchByMfg(cursor)
             if userInput == 4:
                 carmodel.searchByType(dbobj, cursor)
                 
