@@ -13,18 +13,18 @@ userId = input("")
 print("Enter Password")
 password = input("")
 will="yes"
+
+carmodel = carmodel()
+mfg = manufacturer()
+emp = employee()
+inc = incentive()
+cust = Customer()
+customerOrder = CustomerOrder()
+inventory = Inventory()
 while will == "yes":
     if userId == "admin" and password == "admin" :
         dbobj = database();
         cursor = dbobj.dbConn();
-
-        mfg = manufacturer()
-        emp = employee()
-        inc = incentive()
-        cust = Customer()
-        customerOrder = CustomerOrder()
-        inventory = Inventory()
-        carmodel = carmodel()
 
         print("Welcome to OverDrive Information System.....")
 
@@ -148,6 +148,7 @@ while will == "yes":
             print("2. Search by Name")
             print("3. Search by Manufacturer")
             print("4. Search by car type")
+            print("5. Search by customer budget (Higher Limit)")
             userInput = int(input("Please Enter your option"))
 
             if userInput == 1:
@@ -158,17 +159,14 @@ while will == "yes":
                 carmodel.searchByMfg(cursor)
             if userInput == 4:
                 carmodel.searchByType(cursor)
-                
+            if userInput == 5:
+                carmodel.searchByBudget(cursor)
+        will = input("do you want to continue ?")
+        if will != 'yes':
+            break
     else:
         print("Invalid credentials");
-    will = input("do you want to continue ?")
-    if will =='yes':
-        print("Enter User Id")
-        userId = input("")
-        print("Enter Password")
-        password = input("")
-    else:
-            break;
+
 
 
 
