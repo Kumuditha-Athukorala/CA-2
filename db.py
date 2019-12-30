@@ -5,7 +5,7 @@ class dataBase:
 
     def __init__(self):
         self.conn = pyodbc.connect('Driver={SQL Server};'
-                              'Server=LAPTOP-164KM9F1\SQLEXPRESSKUMA;'
+                             'Server=HP\\SQLEXPRESS;'
                               'Database=Over_Drive;'
                               'Trusted_Connection=yes;'
                               )
