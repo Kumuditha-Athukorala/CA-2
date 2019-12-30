@@ -6,7 +6,9 @@ from incentive import incentive
 from customer import Customer
 from customer_order import CustomerOrder
 from inventory import Inventory
+from carmodel import carmodel
 from manufacturer_order import ManufacturerOrder
+
 
 print("Welcome to OverDrive Information System.....");
 print("Enter User Id")
@@ -14,6 +16,14 @@ userId = input("")
 print("Enter Password")
 password = input("")
 will="yes"
+
+carmodel = carmodel()
+mfg = manufacturer()
+emp = employee()
+inc = incentive()
+cust = Customer()
+customerOrder = CustomerOrder()
+inventory = Inventory()
 while will == "yes":
     if userId == "admin" and password == "admin" :
         dbobj = database();
@@ -27,6 +37,7 @@ while will == "yes":
         inventory = Inventory()
         manufacturerOrder = ManufacturerOrder()
 
+
         print("Welcome to OverDrive Information System.....")
 
         print("Choose Option:")
@@ -36,7 +47,9 @@ while will == "yes":
         print("4. Orders")
         print("5. Incentive")
         print("6. Inventory")
-        print("7. Manufacturer Order")
+        print("7. Car Model")
+        print("8. Manufacturer Order")
+
 
         c = int(input("Enter your choice"));
 
@@ -126,11 +139,7 @@ while will == "yes":
             elif m == 3:
                 inc.addIncentive(cursor)
 
-            cursor.execute('SELECT * FROM dbo.Employee')
-            for row in cursor:
-                print(row[1])
-
-        if(c==6):
+        if c == 6:
             print("Choose Inventory related option")
             print("1. Search All Inventory")
             print("2. Add New Inventory Record")
@@ -147,7 +156,34 @@ while will == "yes":
             if (userInput == 4):
                 inventory.viewAvailableCars(dbobj,cursor)
 
-        if(c==7):
+        if c == 7:
+            print("Choose Car Model related option")
+            print("1. Search All Models")
+            print("2. Search by Name")
+            print("3. Search by Manufacturer")
+            print("4. Search by car type")
+            print("5. Search by customer budget (Higher Limit)")
+            print("6. Add car model")
+            userInput = int(input("Please Enter your option"))
+
+            if userInput == 1:
+                carmodel.searchAllCarModel(cursor)
+            if userInput == 2:
+                carmodel.searchByName(cursor)
+            if userInput == 3:
+                carmodel.searchByMfg(cursor)
+            if userInput == 4:
+                carmodel.searchByType(cursor)
+            if userInput == 5:
+                carmodel.searchByBudget(cursor)
+            if userInput == 6:
+                carmodel.addCarModel(cursor)
+
+        will = input("do you want to continue ?")
+        if will != 'yes':
+            break
+
+        if(c==8):
             print("Choose Manufacturer Order related option")
             print("1. Search All Manufacturer Order")
             print("2. Search All Manufacturer Order with Manufacturer and Model")
@@ -164,16 +200,10 @@ while will == "yes":
             if (userInput == 4):
                 manufacturerOrder.updateManufacturerOrderRecord(dbobj,cursor)
 
+
     else:
         print("Invalid credentials");
-    will = input("do you want to continue ?")
-    if will =='yes':
-        print("Enter User Id")
-        userId = input("")
-        print("Enter Password")
-        password = input("")
-    else:
-            break;
+
 
 
 
