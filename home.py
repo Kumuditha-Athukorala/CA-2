@@ -157,7 +157,7 @@ while will == "yes":
             if userInput == 3:
                 carmodel.searchByMfg(cursor)
             if userInput == 4:
-                carmodel.searchByType(dbobj, cursor)
+                carmodel.searchByType(cursor)
                 
     else:
         print("Invalid credentials");
