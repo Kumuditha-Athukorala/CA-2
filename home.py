@@ -145,7 +145,7 @@ while will == "yes":
         if c == 7:
             print("Choose Car Model related option")
             print("1. Search All Models")
-            print("2. Search by name")
+            print("2. Search by Name")
             print("3. Search by Manufacturer")
             print("4. Search by car type")
             userInput = int(input("Please Enter your option"))
@@ -153,7 +153,7 @@ while will == "yes":
             if userInput == 1:
                 carmodel.searchAllCarModel(cursor)
             if userInput == 2:
-                carmodel.searchByName(dbobj, cursor)
+                carmodel.searchByName(cursor)
             if userInput == 3:
                 carmodel.searchByMfg(dbobj, cursor)
             if userInput == 4:

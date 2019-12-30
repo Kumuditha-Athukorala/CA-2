@@ -18,3 +18,25 @@ class carmodel:
         print(dash)
         for row in cursor:
             print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]), str(row[4]),str(row[5])))
+
+    def searchByName(self, cursor):
+
+        name = input("Enter name of model. !")
+        args = ['%' + name + '%']
+
+        cursor.execute('SELECT * FROM dbo.Car_Model where car_model_name like ?', args)
+        dash = '-' * 150
+        data = cursor.fetchall()
+
+        if len(data) != 0:
+            print(dash)
+            print(
+                '{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Car Model Name", "CarType", "Price",
+                                                                    "Year"))
+            print(dash)
+            for row in data:
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1],row[2],
+                                                                         str(row[4]), str(row[5])))
+
+        else:
+            print("No Car model found with that name.!")
