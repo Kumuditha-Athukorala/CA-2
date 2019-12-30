@@ -42,3 +42,17 @@ class ManufacturerOrder:
         self.__carModelId = input("Please Enter the Car Model Id")
         database.insertManufacturerOrderRecord(self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
         print("Manufacturer Order Record added Successfully")
+
+
+    def updateManufacturerOrderRecord(self,database,cursor):
+
+        manufacturerOrder = ManufacturerOrder()
+        manufacturerOrder.searchAllManufactuererOrderRecords(cursor)
+
+        self.__manufacturerOrderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
+        self.__manufacturerOrderDate = input("Please Enter the New or Same Manufacturer Order Date")
+        self.__manufacturerOrderPrice = input("Please Enter the New or Same Manufacturer Order Price")
+        self.__carModelId = input("Please Enter the New or Same Car Model Id")
+        database.updateManufacturerOrderRecord(self.__manufacturerOrderId, self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
+        print("Manufacturer Order Record Updated Successfully")
+

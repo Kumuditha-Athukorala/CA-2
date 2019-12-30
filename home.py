@@ -152,6 +152,7 @@ while will == "yes":
             print("1. Search All Manufacturer Order")
             print("2. Search All Manufacturer Order with Manufacturer and Model")
             print("3. Add New Manufacturer Order Record")
+            print("4. Update Manufacturer Record")
             userInput = int(input("Please Enter the selected option"))
 
             if (userInput == 1):
@@ -160,9 +161,9 @@ while will == "yes":
                 manufacturerOrder.searchAllManufacturerOrdersWithModelAndManufacturer(cursor)
             if (userInput == 3):
                 manufacturerOrder.addManufacturerOrderRecord(dbobj,cursor)
+            if (userInput == 4):
+                manufacturerOrder.updateManufacturerOrderRecord(dbobj,cursor)
 
-
-                
     else:
         print("Invalid credentials");
     will = input("do you want to continue ?")
