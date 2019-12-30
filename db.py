@@ -104,6 +104,15 @@ class dataBase:
             cursor.execute(sql, date, status, manufacturerOrder, customerOrder, id)
 
 
+    def addCarModel(self, id, name, type, price, year):
+
+        with self.conn as cursor:
+            cursor.execute('insert into dbo.car_model (car_model_id,car_model_name,car_model_type,'
+                           'car_model_price,car_model_year,manufacturer_id) values (next value for dbo.SEQ_CAR_MODEL_ID,?,?,?,?,?) ',
+                           name,
+                           type, price, year, id)
+
+
     def insertManufacturerOrderRecord(self, date, price, modelId):
         with self.conn as cursor:
             sql = 'INSERT INTO dbo.Manufacturer_Order (manufacturer_order_id, manufacturer_order_date, manufacturer_order_price, car_model_id)' \
@@ -116,4 +125,5 @@ class dataBase:
             sql = 'UPDATE dbo.Manufacturer_Order SET manufacturer_order_date=?,manufacturer_order_price=?, ' \
                   'car_model_id=? WHERE manufacturer_order_id=? ';
             cursor.execute(sql, date, price, modelId, id)
+
 
