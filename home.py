@@ -200,6 +200,9 @@ while will == "yes":
             if (userInput == 4):
                 manufacturerOrder.updateManufacturerOrderRecord(dbobj,cursor)
 
+        will = input("do you want to continue ?")
+        if will != 'yes':
+            break
 
     else:
         print("Invalid credentials");
