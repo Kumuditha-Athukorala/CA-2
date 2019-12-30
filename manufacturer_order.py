@@ -34,3 +34,11 @@ class ManufacturerOrder:
         print(dash)
         for row in cursor:
             print('{:<5s}{:>30s}{:>60s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), row[3], row[4], row[5]))
+
+    def addManufacturerOrderRecord(self,database,cursor):
+
+        self.__manufacturerOrderDate = input("Please Enter the Manufacturer Order Date")
+        self.__manufacturerOrderPrice = input("Please Enter the Manufacturer Order Price")
+        self.__carModelId = input("Please Enter the Car Model Id")
+        database.insertManufacturerOrderRecord(self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
+        print("Manufacturer Order Record added Successfully")
