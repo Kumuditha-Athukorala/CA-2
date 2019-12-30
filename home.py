@@ -123,10 +123,6 @@ while will == "yes":
             elif m == 3:
                 inc.addIncentive(cursor)
 
-            cursor.execute('SELECT * FROM dbo.Employee')
-            for row in cursor:
-                print(row[1])
-
         if(c==6):
             print("Choose Inventory related option")
             print("1. Search All Inventory")
