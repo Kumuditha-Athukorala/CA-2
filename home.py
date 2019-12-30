@@ -25,7 +25,7 @@ cust = Customer()
 customerOrder = CustomerOrder()
 inventory = Inventory()
 while will == "yes":
-    if userId == "admin" and password == "admin" :
+    if userId == "admin" and password == "admin":
         dbobj = database();
         cursor = dbobj.dbConn();
 
@@ -179,10 +179,6 @@ while will == "yes":
             if userInput == 6:
                 carmodel.addCarModel(cursor)
 
-        will = input("do you want to continue ?")
-        if will != 'yes':
-            break
-
         if(c==8):
             print("Choose Manufacturer Order related option")
             print("1. Search All Manufacturer Order")
@@ -200,6 +196,9 @@ while will == "yes":
             if (userInput == 4):
                 manufacturerOrder.updateManufacturerOrderRecord(dbobj,cursor)
 
+        will = input("do you want to continue ?")
+        if will != 'yes':
+            break
 
     else:
         print("Invalid credentials");
