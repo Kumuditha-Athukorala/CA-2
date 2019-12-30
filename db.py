@@ -103,3 +103,17 @@ class dataBase:
                   'manufacturer_order_id=?, customer_order_id=? WHERE inventory_id=? ';
             cursor.execute(sql, date, status, manufacturerOrder, customerOrder, id)
 
+
+    def insertManufacturerOrderRecord(self, date, price, modelId):
+        with self.conn as cursor:
+            sql = 'INSERT INTO dbo.Manufacturer_Order (manufacturer_order_id, manufacturer_order_date, manufacturer_order_price, car_model_id)' \
+                  ' VALUES (NEXT VALUE FOR SEQ_MANUFACTURER_ORDER_ID,?,?,?)'
+            cursor.execute(sql, date, price, modelId)
+
+
+    def updateManufacturerOrderRecord(self,id, date, price, modelId):
+        with self.conn as cursor:
+            sql = 'UPDATE dbo.Manufacturer_Order SET manufacturer_order_date=?,manufacturer_order_price=?, ' \
+                  'car_model_id=? WHERE manufacturer_order_id=? ';
+            cursor.execute(sql, date, price, modelId, id)
+

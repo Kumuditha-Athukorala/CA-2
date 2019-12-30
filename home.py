@@ -6,6 +6,7 @@ from incentive import incentive
 from customer import Customer
 from customer_order import CustomerOrder
 from inventory import Inventory
+from manufacturer_order import ManufacturerOrder
 
 print("Welcome to OverDrive Information System.....");
 print("Enter User Id")
@@ -24,6 +25,7 @@ while will == "yes":
         cust = Customer()
         customerOrder = CustomerOrder()
         inventory = Inventory()
+        manufacturerOrder = ManufacturerOrder()
 
         print("Welcome to OverDrive Information System.....")
 
@@ -34,6 +36,7 @@ while will == "yes":
         print("4. Orders")
         print("5. Incentive")
         print("6. Inventory")
+        print("7. Manufacturer Order")
 
         c = int(input("Enter your choice"));
 
@@ -143,7 +146,24 @@ while will == "yes":
                 inventory.updateInventoryRecord(dbobj,cursor)
             if (userInput == 4):
                 inventory.viewAvailableCars(dbobj,cursor)
-                
+
+        if(c==7):
+            print("Choose Manufacturer Order related option")
+            print("1. Search All Manufacturer Order")
+            print("2. Search All Manufacturer Order with Manufacturer and Model")
+            print("3. Add New Manufacturer Order Record")
+            print("4. Update Manufacturer Record")
+            userInput = int(input("Please Enter the selected option"))
+
+            if (userInput == 1):
+                manufacturerOrder.searchAllManufactuererOrderRecords(cursor)
+            if (userInput == 2):
+                manufacturerOrder.searchAllManufacturerOrdersWithModelAndManufacturer(cursor)
+            if (userInput == 3):
+                manufacturerOrder.addManufacturerOrderRecord(dbobj,cursor)
+            if (userInput == 4):
+                manufacturerOrder.updateManufacturerOrderRecord(dbobj,cursor)
+
     else:
         print("Invalid credentials");
     will = input("do you want to continue ?")
