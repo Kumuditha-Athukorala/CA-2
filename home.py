@@ -149,6 +149,7 @@ while will == "yes":
             print("3. Search by Manufacturer")
             print("4. Search by car type")
             print("5. Search by customer budget (Higher Limit)")
+            print("6. Add car model")
             userInput = int(input("Please Enter your option"))
 
             if userInput == 1:
@@ -161,6 +162,9 @@ while will == "yes":
                 carmodel.searchByType(cursor)
             if userInput == 5:
                 carmodel.searchByBudget(cursor)
+            if userInput == 6:
+                carmodel.addCarModel(cursor)
+
         will = input("do you want to continue ?")
         if will != 'yes':
             break

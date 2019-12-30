@@ -87,3 +87,35 @@ class carmodel:
         for row in cursor:
             print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),
                                                                      str(row[4]), str(row[5])))
+
+    def addCarModel(self, cursor):
+
+        name = input("Enter name of manufacturer. !")
+        args = ['%' + name + '%']
+
+        cursor.execute('SELECT * FROM dbo.Manufacturer where manufacturer_name like ?', args)
+        dash = '-' * 150
+        data = cursor.fetchall()
+
+        if len(data) != 0:
+            print(dash)
+            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "Phone-number"))
+            print(dash)
+            for row in data:
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
+            db = database()
+            id = int(input("Enter car id from "))
+            name = input("Enter car model name")
+            type = input("Enter car model type")
+            price = int(input("Enter car price"))
+            year = int(input("Enter car year"))
+            db.addCarModel(id, name, type, price, year)
+            print("Car model entered successfully!")
+
+        else:
+            print("No manufacturer found with that name.!")
+
+
+
+
+
