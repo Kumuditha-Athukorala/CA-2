@@ -45,7 +45,16 @@ class employee:
         self.employeeDob = input("Enter employee dob.")
         self.employeePps = input("Enter employee pps number.")
         self.employeeSalary = int(input("Enter employee salary")) ;
-        db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary)
+        print("Enter employee address.")
+        street = input("Enter street")
+        bldng = input("Enter building/house name")
+        room = input("Enter room no/house no")
+        county = input("Enter county name")
+        areacode = input("Enter area code")
+
+        address = "<Address><Street>"+street+"</Street><Building>"+bldng+"</Building><RoomNo>"+room+"</RoomNo><County>"+county+"</County><AreaCode>"+areacode+"</AreaCode></Address>"
+
+        db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary,address)
         print("Record inserted successfully in Employee table.!")
 
     def updateEmployee(self, cursor):
@@ -72,8 +81,17 @@ class employee:
             self.employeeDob = input("Enter new/same employee dob.")
             self.employeePps = input("Enter new/same employee pps number.")
             self.employeeSalary = int(input("Enter new/same employee salary"));
+            print("Enter employee address.")
+            street = input("Enter street")
+            bldng = input("Enter building/house name")
+            room = input("Enter room no/house no")
+            county = input("Enter county name")
+            areacode = input("Enter area code")
+
+            address = "<Address><Street>" + street + "</Street><Building>" + bldng + "</Building><RoomNo>" + room + "</RoomNo><County>" + county + "</County><AreaCode>" + areacode + "</AreaCode></Address>"
+
             db.updateEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,
-                        self.employeeSalary,self.employeeId)
+                        self.employeeSalary,self.employeeId, address)
             print("Record updated successfully in Employee table.!")
         else:
             print("No employee found with that name.!")
