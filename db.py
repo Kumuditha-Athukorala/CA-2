@@ -36,12 +36,12 @@ class dataBase:
                            name,
                            desig, dob, pps,salary,address)
 
-    def updateEmp(self, name, desig, dob, pps,salary,id):
+    def updateEmp(self, name, desig, dob, pps,salary,id,add):
         with self.conn as cursor:
             cursor.execute('update dbo.Employee set employee_name=?,employee_designation=?,'
-                           'employee_dob=?,employee_pps_number=?,employee_salary=? where employee_id=? ',
+                           'employee_dob=?,employee_pps_number=?,employee_salary=?,employee_address=? where employee_id=? ',
                            name,
-                           desig, dob, pps,salary,id)
+                           desig, dob, pps,salary,add,id)
 
     def insertIncentive(self, id, date):
 
