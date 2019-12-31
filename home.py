@@ -490,7 +490,7 @@ while will == "yes":
             if userInput == 2:
                 manufacturerOrder.searchAllManufacturerOrdersWithModelAndManufacturer(cursor)
             if userInput == 3:
-                manufacturerOrder.addManufacturerOrderRecord(dbobj, cursor)
+                report.updateEmployeeAddress(cursor)
             if userInput == 4:
                 manufacturerOrder.updateManufacturerOrderRecord(dbobj, cursor)
 
