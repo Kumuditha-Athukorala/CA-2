@@ -1,5 +1,6 @@
 from db import dataBase as database
-
+from validator import Validator as validator
+validator = validator()
 class employee:
 
     def __init__(self):
@@ -40,11 +41,34 @@ class employee:
     def addEmployee(self, cursor):
 
         db = database()
+
         self.employeeName = input("Enter name of employee.")
+        mname = self.employeeName
+        while not validator.nameValidate(mname):
+            mname = input("Enter name of employee.")
+        self.employeeName = mname
+
+
         self.employeeDesignation = input("Enter employee designation.")
+        mname = self.employeeDesignation
+        while not validator.nameValidate(mname):
+            mname = input("Enter employee designation.")
+        self.employeeDesignation = mname
+
         self.employeeDob = input("Enter employee dob.")
+
         self.employeePps = input("Enter employee pps number.")
-        self.employeeSalary = int(input("Enter employee salary")) ;
+        addr = self.employeePps
+        while not validator.numberValidate(addr):
+            addr = input("Enter employee pps number.")
+        self.employeePps = addr
+
+        self.employeeSalary = input("Enter employee salary") ;
+        addr = self.employeeSalary
+        while not validator.numberValidate(addr):
+            addr = input("Enter employee salary")
+        self.employeeSalary = addr
+
         print("Enter employee address.")
         street = input("Enter street")
         bldng = input("Enter building/house name")
@@ -76,11 +100,31 @@ class employee:
                                                                          str(row[6])))
                 self.employeeId = row[0]
             db = database()
-            self.employeeName = input("Enter new/same name of employee.")
-            self.employeeDesignation = input("Enter new/same employee designation.")
-            self.employeeDob = input("Enter new/same employee dob.")
-            self.employeePps = input("Enter new/same employee pps number.")
-            self.employeeSalary = int(input("Enter new/same employee salary"));
+            self.employeeName = input("Enter name of employee.")
+            mname = self.employeeName
+            while not validator.nameValidate(mname):
+                mname = input("Enter name of employee.")
+            self.employeeName = mname
+
+            self.employeeDesignation = input("Enter employee designation.")
+            mname = self.employeeDesignation
+            while not validator.nameValidate(mname):
+                mname = input("Enter employee designation.")
+            self.employeeDesignation = mname
+
+            self.employeeDob = input("Enter employee dob.")
+
+            self.employeePps = input("Enter employee pps number.")
+            addr = self.employeePps
+            while not validator.numberValidate(addr):
+                addr = input("Enter employee pps number.")
+            self.employeePps = addr
+
+            self.employeeSalary = input("Enter employee salary");
+            addr = self.employeeSalary
+            while not validator.numberValidate(addr):
+                addr = input("Enter employee salary")
+            self.employeeSalary = addr
             print("Enter employee address.")
             street = input("Enter street")
             bldng = input("Enter building/house name")

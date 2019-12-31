@@ -11,10 +11,10 @@ class Validator:
 
     def nameValidate(self, name):
         if len(name) > 50:
-            print("Name cannot be more than 50 characters.")
+            print("Field cannot be more than 50 characters.")
             return False
         if '' == name or 'null' == name:
-            print("Name cannot be blank.")
+            print("Field cannot be blank.")
             return False
         return True
 

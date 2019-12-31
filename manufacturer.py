@@ -116,7 +116,7 @@ class manufacturer:
             while not validator.numberValidate(addr):
                 addr = input("Enter manufacturer's contact number.")
             self.manufacturerPhno = addr
-            
+
             db.updateMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno,self.manufacturerId)
             print("Record updated successfully in Manufacturer table.!")
         else:
