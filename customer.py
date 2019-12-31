@@ -41,8 +41,18 @@ class Customer:
     def addCustomer(self, databse, cursor):
 
         self.__customerName = input("Enter name of Customer.")
-        self.__customerAddress = input("Enter Customer Address.")
+
         self.__customerPhoneNumber = input("Enter Customer Phone Number.")
+
+        print("Enter customer address.")
+        street = input("Enter street")
+        bldng = input("Enter building/house name")
+        room = input("Enter room no/house no")
+        county = input("Enter county name")
+        areacode = input("Enter area code")
+
+        self.__customerAddress = "<Address><Street>" + street + "</Street><Building>" + bldng + "</Building><RoomNo>" + room + "</RoomNo><County>" + county + "</County><AreaCode>" + areacode + "</AreaCode></Address>"
+
         databse.insertCustomerRecord(self.__customerName,self.__customerAddress,self.__customerPhoneNumber)
         print("Customer Record added successfully..!")
 
@@ -66,8 +76,16 @@ class Customer:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}'.format(row[0], row[1], row[2], row[3]))
                 self.__customerId = row[0]
 
-            self.__customerName = input("Enter name of the Customer.")
-            self.__customerAddress = input("Enter address of the Customer.")
+            self.__customerName = input("Enter new name of the Customer.")
+            print("Enter customer address.")
+            street = input("Enter street")
+            bldng = input("Enter building/house name")
+            room = input("Enter room no/house no")
+            county = input("Enter county name")
+            areacode = input("Enter area code")
+
+            self.__customerAddress = "<Address><Street>" + street + "</Street><Building>" + bldng + "</Building><RoomNo>" + room + "</RoomNo><County>" + county + "</County><AreaCode>" + areacode + "</AreaCode></Address>"
+
             self.__customerPhoneNumber = input("Enter phone number of the Customer")
             database.updateCustomerRecord(self.__customerId, self.__customerName, self.__customerAddress, self.__customerPhoneNumber)
             print("Customer Record Updated Successfully.!")
