@@ -29,12 +29,12 @@ class dataBase:
                            name,
                            addr, eid, phone,id)
 
-    def insertEmp(self, name, desig, dob, pps, salary):
+    def insertEmp(self, name, desig, dob, pps, salary,address):
         with self.conn as cursor:
             cursor.execute('insert into dbo.Employee (employee_id,employee_name,employee_designation,'
-                           'employee_dob,employee_pps_number,employee_salary) values (concat(\'OVDE\',(next value for dbo.SEQ_EMPLOYEE_ID)),?,?,?,?,?) ',
+                           'employee_dob,employee_pps_number,employee_salary,employee_address) values (concat(\'OVDE\',(next value for dbo.SEQ_EMPLOYEE_ID)),?,?,?,?,?,?) ',
                            name,
-                           desig, dob, pps,salary)
+                           desig, dob, pps,salary,address)
 
     def updateEmp(self, name, desig, dob, pps,salary,id):
         with self.conn as cursor:
