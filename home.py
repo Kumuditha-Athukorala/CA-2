@@ -242,7 +242,7 @@ while will == "yes":
 
         if c == 3:
             print("Choose Customer Order related option")
-            print("1. Search All Cutomer Orders")
+            print("1. Search All Customer Orders")
             print("2. Search Customer Orders by Customer Id")
             print("3. Search Customer Orders by Related Employee Id")
             print("4. Add New Customer Order Record")
@@ -488,11 +488,11 @@ while will == "yes":
             if userInput == 1:
                 report.getCustomerSpecificOrders(cursor)
             if userInput == 2:
-                manufacturerOrder.searchAllManufacturerOrdersWithModelAndManufacturer(cursor)
+                report.employeePerformance(cursor)
             if userInput == 3:
                 report.updateEmployeeAddress(cursor)
             if userInput == 4:
-                manufacturerOrder.updateManufacturerOrderRecord(dbobj, cursor)
+                report.searchBySeats(cursor)
 
         will = input("do you want to continue ?")
         if will != 'yes':
