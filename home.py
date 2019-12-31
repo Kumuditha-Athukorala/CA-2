@@ -27,6 +27,7 @@ customerOrder = CustomerOrder()
 inventory = Inventory()
 manufacturerOrder = ManufacturerOrder()
 report = report()
+
 while will == "yes":
     if userId == "admin" and password == "admin":
         dbobj = database();

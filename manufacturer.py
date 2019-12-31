@@ -1,6 +1,7 @@
 import pyodbc
 from db import dataBase as database
-
+from validator import Validator as validator
+validator = validator()
 class manufacturer:
 
     def __init__(self):
@@ -40,11 +41,23 @@ class manufacturer:
     def addManufacturer(self, cursor):
 
         db = database()
+
         self.manufacturerName = input("Enter name of manufacturer.")
-        self.manufacturerAddr = input("Enter manufacturer address.")
-        self.manufacturerEmail = input("Enter manufacturer email.")
-        self.manufacturerPhno = input("Enter manufacturer contact number.")
-        db.insertMf(self.manufacturerName,self.manufacturerAddr,self.manufacturerEmail,self.manufacturerPhno)
+        mname = self.manufacturerName
+        while not validator.nameValidate(mname):
+            mname = input("Enter name of manufacturer.")
+        self.manufacturerName = mname
+
+        self.manufacturerAddr = input("Enter manufacturer's address.")
+        addr = self.manufacturerAddr
+        while not validator.addrValidate(addr):
+            addr = input("Enter manufacturer's address.")
+        self.manufacturerAddr = addr
+
+        #self.manufacturerEmail = input("Enter manufacturer email.")
+        #self.manufacturerPhno = input("Enter manufacturer contact number.")
+
+        db.insertMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
         print("Record inserted successfully in Manufacturer table.!")
 
 
