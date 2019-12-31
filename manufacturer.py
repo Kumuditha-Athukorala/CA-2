@@ -92,10 +92,31 @@ class manufacturer:
             for row in data:
                 self.manufacturerId = row[0]
             db = database()
-            self.manufacturerName = input("Now Enter new/same name of manufacturer.")
-            self.manufacturerAddr = input("Enter new/same manufacturer address.")
-            self.manufacturerEmail = input("Enter new/same manufacturer email.")
-            self.manufacturerPhno = input("Enter new/same manufacturer contact number.")
+
+            self.manufacturerName = input("Enter name of manufacturer.")
+            mname = self.manufacturerName
+            while not validator.nameValidate(mname):
+                mname = input("Enter name of manufacturer.")
+            self.manufacturerName = mname
+
+            self.manufacturerAddr = input("Enter manufacturer's address.")
+            addr = self.manufacturerAddr
+            while not validator.addrValidate(addr):
+                addr = input("Enter manufacturer's address.")
+            self.manufacturerAddr = addr
+
+            self.manufacturerEmail = input("Enter manufacturer's email.")
+            addr = self.manufacturerEmail
+            while not validator.emailValidate(addr):
+                addr = input("Enter manufacturer's email.")
+            self.manufacturerEmail = addr
+
+            self.manufacturerPhno = input("Enter manufacturer's contact number.")
+            addr = self.manufacturerPhno
+            while not validator.numberValidate(addr):
+                addr = input("Enter manufacturer's contact number.")
+            self.manufacturerPhno = addr
+            
             db.updateMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno,self.manufacturerId)
             print("Record updated successfully in Manufacturer table.!")
         else:
