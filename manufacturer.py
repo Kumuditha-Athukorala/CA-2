@@ -60,16 +60,15 @@ class manufacturer:
             addr = input("Enter manufacturer's email.")
         self.manufacturerEmail = addr
 
-        self.manufacturerPhno = input("Enter manufacturer's number.")
+        self.manufacturerPhno = input("Enter manufacturer's contact number.")
         addr = self.manufacturerPhno
-        while not validator.emailValidate(addr):
-            addr = input("Enter manufacturer's number.")
+        while not validator.numberValidate(addr):
+            addr = input("Enter manufacturer's contact number.")
         self.manufacturerPhno = addr
 
 
-        #self.manufacturerPhno = input("Enter manufacturer contact number.")
 
-       # db.insertMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
+        db.insertMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
         print("Record inserted successfully in Manufacturer table.!")
 
 

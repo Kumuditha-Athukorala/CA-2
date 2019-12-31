@@ -41,4 +41,24 @@ class Validator:
         if len(no) > 13 or '' == no or 'null' == no:
             print("Phone Number too long or blank")
             return False
+        while True:
+            try:
+                userInput = int(no)
+            except ValueError:
+                print("Not a valid number.! Enter again.")
+                return False
+            else:
+                return True
+                break
         return True
+
+    def inputNumber(message):
+        while True:
+            try:
+                userInput = int(input(message))
+            except ValueError:
+                print("Not a valid number.! Enter again.")
+                continue
+            else:
+                return userInput
+                break
