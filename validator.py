@@ -1,3 +1,6 @@
+import re
+
+
 class Validator:
 
     def customerDetailsValidate(self, firstName):
@@ -24,7 +27,18 @@ class Validator:
             return False
         return True
 
-    def emailValidate(self, name):
-        if len(name) > 100 or '' == name or 'null' == name:
+    def emailValidate(self, email):
+        if not re.match("[^@]+@[^@]+\.[^@]+", email):
+            print("Invalid email")
+            return False
+        if len(email) > 100 or '' == email or 'null' == email:
+            print("Email too long or blank")
+            return False
+        return True
+
+    def numberValidate(self, no):
+
+        if len(no) > 13 or '' == no or 'null' == no:
+            print("Phone Number too long or blank")
             return False
         return True
