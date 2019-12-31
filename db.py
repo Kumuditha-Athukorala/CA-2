@@ -104,13 +104,12 @@ class dataBase:
             cursor.execute(sql, date, status, manufacturerOrder, customerOrder, id)
 
 
-    def addCarModel(self, id, name, type, price, year):
-
+    def addCarModel(self, id, name, type, price, year, variant):
+        print(variant)
         with self.conn as cursor:
             cursor.execute('insert into dbo.car_model (car_model_id,car_model_name,car_model_type,'
-                           'car_model_price,car_model_year,manufacturer_id) values (next value for dbo.SEQ_CAR_MODEL_ID,?,?,?,?,?) ',
-                           name,
-                           type, price, year, id)
+                           'car_model_price,car_model_year,manufacturer_id,car_model_variant) values (next value for dbo.SEQ_CAR_MODEL_ID,?,?,?,?,?,?)',
+                           name, type, price, year, id, variant)
 
 
     def insertManufacturerOrderRecord(self, date, price, modelId):

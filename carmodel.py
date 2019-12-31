@@ -109,7 +109,19 @@ class carmodel:
             type = input("Enter car model type")
             price = int(input("Enter car price"))
             year = int(input("Enter car year"))
-            db.addCarModel(id, name, type, price, year)
+
+            print("Enter car specification")
+            color = input("Enter car color")
+            engine = input("Enter engine number")
+            fuel = input("Enter fuel type")
+            hp = input("Enter horse power")
+            zts = input("Enter zero to sixty")
+            capacity = input("Enter seating capacity")
+            ab = input("Airbags ? Yes or No")
+
+            variant = "<Variant><Color>"+color+"</Color><EngineNo>"+engine+"</EngineNo><Fuel>"+fuel+"</Fuel><Power>"+hp+"</Power><ZeroToSixty>"+zts+"</ZeroToSixty><SeatingCapacity>"+capacity+"</SeatingCapacity><Airbags>"+ab+"</Airbags></Variant>"
+            db.addCarModel(id, name, type, price, year, variant)
+
             print("Car model entered successfully!")
 
         else:
