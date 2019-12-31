@@ -31,9 +31,9 @@ class report:
 
         if len(data) != 0:
             print(dash)
-            print('{:<5s}{:>30s}{:>60s}'.format("Model Name", "Model Type", "Model Price", "Year"))
+            print('{:<15s}{:>30s}{:>30s}'.format("Model Name", "Model Type", "Model Price", "Year"))
             print(dash)
             for row in data:
-                print('{:<5s}{:>30s}{:>60s}'.format(row[1], row[2], str(row[4]),str(row[5])))
+                print('{:<15s}{:>30s}{:>30s}'.format(row[1], row[2], str(row[4]), str(row[5])))
         else:
             print("No such car model found")

@@ -492,7 +492,7 @@ while will == "yes":
             if userInput == 3:
                 manufacturerOrder.addManufacturerOrderRecord(dbobj, cursor)
             if userInput == 4:
-                report.searchBySeats(dbobj, cursor)
+                report.searchBySeats(cursor)
 
         will = input("do you want to continue ?")
         if will != 'yes':
