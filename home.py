@@ -26,6 +26,7 @@ cust = Customer()
 customerOrder = CustomerOrder()
 inventory = Inventory()
 manufacturerOrder = ManufacturerOrder()
+report = report()
 while will == "yes":
     if userId == "admin" and password == "admin":
         dbobj = database();
@@ -478,18 +479,18 @@ while will == "yes":
 
         if c == 9:
             print("Choose Report related option")
-            print("1. Customer Order Details with Id") #Kumu
+            print("1. Customer Order Details with Id")
             print("2. Employee Performance")
             print("3. Update Employee Address") #Kumu
             print("4. Search car based on seats")
             userInput = int(input("Please Enter the selected option"))
 
             if userInput == 1:
-                manufacturerOrder.searchAllManufactuererOrderRecords(cursor)
+                report.getCustomerSpecificOrders(cursor)
             if userInput == 2:
                 manufacturerOrder.searchAllManufacturerOrdersWithModelAndManufacturer(cursor)
             if userInput == 3:
-                manufacturerOrder.addManufacturerOrderRecord(dbobj, cursor)
+                report.updateEmployeeAddress(cursor)
             if userInput == 4:
                 manufacturerOrder.updateManufacturerOrderRecord(dbobj, cursor)
 
@@ -497,10 +498,9 @@ while will == "yes":
         if will != 'yes':
             break
 
-
     else:
         print("Invalid credentials");
-
+        break
 
 
 
