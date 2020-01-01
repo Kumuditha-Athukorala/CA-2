@@ -25,7 +25,7 @@ class TestEmployee(unittest.TestCase):
         self.assertTrue(result)
 
     def test_EmployeeSalaryValidation(self):
-        salary='2500'
+        salary=2500
         validator = Validator()
 
         result = validator.numberValidate(salary)

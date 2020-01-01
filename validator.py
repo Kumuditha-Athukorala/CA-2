@@ -32,7 +32,7 @@ class Validator:
 
     def numberValidate(self, no):
 
-        if len(no) > 13 or '' == no or 'null' == no:
+        if len(str(no)) > 13 or '' == no or 'null' == no:
             print("Phone Number too long or blank")
             return False
         while True:
