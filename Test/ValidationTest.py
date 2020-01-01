@@ -3,7 +3,6 @@ from validator import Validator
 
 class ValidationTest(unittest.TestCase):
 
-
     def test_NameValidator(self):
         name = 'kuma'
         validator = Validator()
@@ -25,3 +24,11 @@ class ValidationTest(unittest.TestCase):
         result = validator.emailValidate(email)
         self.assertTrue(result)
 
+    def test_NumberValidator(self):
+        number = ''
+        validator = Validator()
+
+        result = validator.numberValidate(number)
+        self.assertTrue(result)
+
+    
