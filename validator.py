@@ -3,12 +3,6 @@ import re
 
 class Validator:
 
-    def customerDetailsValidate(self, firstName):
-        if len(firstName) > 50 or '' == firstName or 'null' == firstName:
-            print("")
-            return False
-        return True
-
     def nameValidate(self, name):
         if len(name) > 50:
             print("Field cannot be more than 50 characters.")
