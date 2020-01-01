@@ -1,14 +1,8 @@
 import unittest
 from validator import Validator
 
-class TestCustomer(unittest.TestCase):
+class ValidationTest(unittest.TestCase):
 
-    def test_CustomerDetails(self):
-        firstName = 'Kuma'
-        validator = Validator()
-
-        result = validator.customerDetailsValidate(firstName)
-        self.assertTrue(result)
 
     def test_NameValidator(self):
         name = 'kuma'
@@ -23,3 +17,11 @@ class TestCustomer(unittest.TestCase):
 
         result = validator.addrValidate(address)
         self.assertTrue(result)
+
+    def test_EmailValodator(self):
+        email = 'kuma@gmail.com'
+        validator = Validator()
+
+        result = validator.emailValidate(email)
+        self.assertTrue(result)
+
