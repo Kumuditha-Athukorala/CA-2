@@ -1,5 +1,6 @@
 import pyodbc
-
+from validator import Validator as validator
+validator = validator()
 class Customer:
     def __init__(self):
         self.__customerId=""
@@ -41,8 +42,16 @@ class Customer:
     def addCustomer(self, databse, cursor):
 
         self.__customerName = input("Enter name of Customer.")
+        mname = self.__customerName
+        while not validator.nameValidate(mname):
+            mname = input("Enter name of Customer.")
+        self.__customerName = mname
 
         self.__customerPhoneNumber = input("Enter Customer Phone Number.")
+        addr = self.__customerPhoneNumber
+        while not validator.numberValidate(addr):
+            addr = input("Enter Customer Phone Number.")
+        self.__customerPhoneNumber = addr
 
         print("Enter customer address.")
         street = input("Enter street")
@@ -76,7 +85,18 @@ class Customer:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}'.format(row[0], row[1], row[2], row[3]))
                 self.__customerId = row[0]
 
-            self.__customerName = input("Enter new name of the Customer.")
+            self.__customerName = input("Enter name of Customer.")
+            mname = self.__customerName
+            while not validator.nameValidate(mname):
+                mname = input("Enter name of Customer.")
+            self.__customerName = mname
+
+            self.__customerPhoneNumber = input("Enter Customer Phone Number.")
+            addr = self.__customerPhoneNumber
+            while not validator.numberValidate(addr):
+                addr = input("Enter Customer Phone Number.")
+            self.__customerPhoneNumber = addr
+
             print("Enter customer address.")
             street = input("Enter street")
             bldng = input("Enter building/house name")

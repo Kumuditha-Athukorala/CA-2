@@ -1,5 +1,6 @@
 from db import dataBase as database
-
+from validator import Validator as validator
+validator = validator()
 class carmodel:
 
     def __init__(self):
@@ -105,10 +106,24 @@ class carmodel:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
             db = database()
             id = int(input("Enter car id from "))
+
             name = input("Enter car model name")
+
+            while not validator.nameValidate(name):
+                name = input("Enter car model name")
+
+
             type = input("Enter car model type")
-            price = int(input("Enter car price"))
-            year = int(input("Enter car year"))
+            while not validator.nameValidate(type):
+                type = input("Enter car model type")
+
+            price = input("Enter car price")
+            while not validator.numberValidate(price):
+                price = input("Enter car price")
+
+            year = input("Enter car year")
+            while not validator.numberValidate(year):
+                year = input("Enter car year")
 
             print("Enter car specification")
             color = input("Enter car color")
