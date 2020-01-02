@@ -102,7 +102,7 @@ class CustomerOrder:
 
         emp = employee()
         emp.selectAllEmployees(cursor)
-        
+
         self.__employeeId = input("Please Enter the New or Same Employee Id")
 
         database.updateCustomerOrderRecord(self.__customerOderId,self.__customerOderDate,self.__customerOrderDeliveryDate,
