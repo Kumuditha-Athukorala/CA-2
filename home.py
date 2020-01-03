@@ -484,6 +484,8 @@ while will == "yes":
             print("2. Employee Performance")
             print("3. Update Employee Address")
             print("4. Search car based on seats")
+            print("5. View Available Cars")
+            print("6. View Sold Cars")
             userInput = int(input("Please Enter the selected option"))
 
             if userInput == 1:
@@ -494,6 +496,10 @@ while will == "yes":
                 report.updateEmployeeAddress(cursor)
             if userInput == 4:
                 report.searchBySeats(cursor)
+            if userInput == 5:
+                report.getAvailableCars(cursor)
+            if userInput == 6:
+                report.getSoldCars(cursor)
 
         will = input("do you want to continue ?")
         if will != 'yes':
