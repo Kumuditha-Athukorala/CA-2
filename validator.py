@@ -34,7 +34,7 @@ class Validator:
     def numberValidate(self, no):
 
         if len(str(no)) > 13 or '' == no or 'null' == no:
-            print("Phone Number too long or blank")
+            print("Number too long or blank")
             return False
         while True:
             try:
@@ -57,6 +57,18 @@ class Validator:
             else:
                 return userInput
                 break
+
+
+    def validatePPS(self,number):
+
+        if not re.match(r"^(\d{7})([A-Z]{1,2})$",number):
+            print("Invalid PPS number")
+            return False
+        return True
+
+#v =Validator()
+#print(v.validatePPS("123A567TW"))
+
 
     def dateValidate(self,date):
 
@@ -87,3 +99,4 @@ class Validator:
                 return False
         if '' != price or 'null' != price:
             return True
+

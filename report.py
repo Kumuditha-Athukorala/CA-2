@@ -118,3 +118,28 @@ class report:
         print(dash)
         for row in cursor:
             print('{:<5s}{:>30s}{:>60s}{:>30s}{:>36s}{:>28s}'.format(str(row[0]), row[1], row[2], str(row[3]), row[4], row[5]))
+
+    def getOrderTaken(self,cursor):
+
+        #sql="SELECT e.employee_id, e.employee_name,e.employee_dob,count(co.customer_order_id) as ordertaken FROM Employee e INNER JOIN Customer_Order co ON e.employee_id = co.employee_id group by e.employee_id, e.employee_name,e.employee_dob"
+        sql ="SELECT e.employee_id, e.employee_name,count(co.customer_order_id) as ordertaken FROM Employee e  INNER JOIN Customer_Order co ON e.employee_id = co.employee_id group by e.employee_id, e.employee_name,e.employee_dob order by ordertaken desc"
+        cursor.execute(sql)
+        dash = '-' * 100
+        print(dash)
+        print('{:<5s}{:>30s}{:>30s}'.format("Employee Id", "Name", "Order Taken"))
+        print(dash)
+        for row in cursor:
+            print('{:<5s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2])))
+
+    def getOrderTakenDuringTwoDates(self,cursor):
+
+        date1 = input("Enter from date in yyyy/mm/dd format:")
+        date2 = input("Enter to date in yyyy/mm/dd format:")
+        sql="SELECT e.employee_id, e.employee_name,count(co.customer_order_id) as ordertaken FROM Employee e INNER JOIN Customer_Order co ON e.employee_id = co.employee_id where co.customer_order_date between ? and ? group by e.employee_id, e.employee_name,e.employee_dob order by ordertaken desc"
+        cursor.execute(sql, date1, date2)
+        dash = '-' * 100
+        print(dash)
+        print('{:<5s}{:>30s}{:>30s}'.format("Employee Id", "Name", "Order Taken"))
+        print(dash)
+        for row in cursor:
+            print('{:<5s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2])))
