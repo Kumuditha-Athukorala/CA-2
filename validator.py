@@ -59,7 +59,7 @@ class Validator:
 
 
     def validatePPS(self,number):
-        
+
         if not re.match(r"^(\d{7})([A-Z]{1,2})$",number):
             print("Invalid PPS number")
             return False

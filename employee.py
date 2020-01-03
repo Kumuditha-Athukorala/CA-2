@@ -78,7 +78,7 @@ class employee:
 
         address = "<Address><Street>"+street+"</Street><Building>"+bldng+"</Building><RoomNo>"+room+"</RoomNo><County>"+county+"</County><AreaCode>"+areacode+"</AreaCode></Address>"
 
-       # db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary,address)
+        db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary,address)
         print("Record inserted successfully in Employee table.!")
 
     def updateEmployee(self, cursor):
