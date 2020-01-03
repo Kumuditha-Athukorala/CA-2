@@ -59,7 +59,7 @@ class employee:
 
         self.employeePps = input("Enter employee pps number.")
         addr = self.employeePps
-        while not validator.numberValidate(addr):
+        while not validator.validatePPS(addr):
             addr = input("Enter employee pps number.")
         self.employeePps = addr
 
