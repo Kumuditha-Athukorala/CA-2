@@ -59,7 +59,7 @@ class employee:
 
         self.employeePps = input("Enter employee pps number.")
         addr = self.employeePps
-        while not validator.numberValidate(addr):
+        while not validator.validatePPS(addr):
             addr = input("Enter employee pps number.")
         self.employeePps = addr
 
@@ -78,7 +78,7 @@ class employee:
 
         address = "<Address><Street>"+street+"</Street><Building>"+bldng+"</Building><RoomNo>"+room+"</RoomNo><County>"+county+"</County><AreaCode>"+areacode+"</AreaCode></Address>"
 
-        db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary,address)
+       # db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary,address)
         print("Record inserted successfully in Employee table.!")
 
     def updateEmployee(self, cursor):
