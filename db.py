@@ -5,7 +5,7 @@ class dataBase:
 
     def __init__(self):
         self.conn = pyodbc.connect('Driver={SQL Server};'
-                             'Server=HP\\SQLEXPRESS;'
+                             'Server=LAPTOP-164KM9F1\SQLEXPRESSKUMA;'
                               'Database=Over_Drive;'
                               'Trusted_Connection=yes;'
                               )
@@ -59,7 +59,7 @@ class dataBase:
     def updateCustomerRecord(self, id,name, address, phoneNumber):
         with self.conn as cursor:
             sql = 'UPDATE dbo.Customer SET customer_name=?,customer_address=?, ' \
-                  'customer_phone=? WHERE customer_id=? ';
+                  'customer_phone=? WHERE customer_id=? '
             cursor.execute(sql, name, address, phoneNumber, id)
 
     def insertCustomerOrderRecord(self, orderDate, deliveryDate, sellingPrice, customerId, employeeId):
@@ -122,7 +122,7 @@ class dataBase:
     def updateManufacturerOrderRecord(self,id, date, price, modelId):
         with self.conn as cursor:
             sql = 'UPDATE dbo.Manufacturer_Order SET manufacturer_order_date=?,manufacturer_order_price=?, ' \
-                  'car_model_id=? WHERE manufacturer_order_id=? ';
+                  'car_model_id=? WHERE manufacturer_order_id=? '
             cursor.execute(sql, date, price, modelId, id)
 
 

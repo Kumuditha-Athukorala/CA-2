@@ -12,12 +12,12 @@ class ManufacturerOrder:
     def searchAllManufactuererOrderRecords(self,cursor):
 
         cursor.execute("SELECT * FROM dbo.Manufacturer_Order");
-        dash = '-' * 250
+        dash = '-' * 150
         print(dash)
-        print('{:<5s}{:>30s}{:>60s}{:>30s}'.format("Order Id", "Manufacturer Order Date", "Manufacturer Order Price", "Car Model Id"))
+        print('{:<5s}{:>30s}{:>40s}{:>30s}'.format("Order Id", "Manufacturer Order Date", "Manufacturer Order Price", "Car Model Id"))
         print(dash)
         for row in cursor:
-            print('{:<5s}{:>30s}{:>60s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), str(row[3])))
+            print('{:<5s}{:>30s}{:>40s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), str(row[3])))
 
     def searchAllManufacturerOrdersWithModelAndManufacturer(self,cursor):
 
@@ -27,13 +27,13 @@ class ManufacturerOrder:
               "INNER JOIN Manufacturer m ON cm.manufacturer_id = m.manufacturer_id"
 
         cursor.execute(sql)
-        dash = '-' * 250
+        dash = '-' * 175
         print(dash)
-        print('{:<5s}{:>30s}{:>60s}{:>30s}{:>30s}{:>30s}'.format("Order Id", "Manufacturer Order Date", "Manufacturer Order Price",
+        print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>25s}'.format("Order Id", "Manufacturer Order Date", "Manufacturer Order Price",
                                                    "Manufacturer Name", "Model Name", "Type"))
         print(dash)
         for row in cursor:
-            print('{:<5s}{:>30s}{:>60s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), row[3], row[4], row[5]))
+            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), row[3], row[4], row[5]))
 
     def addManufacturerOrderRecord(self,database,cursor):
 
