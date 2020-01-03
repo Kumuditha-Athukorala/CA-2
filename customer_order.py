@@ -1,6 +1,9 @@
 import pyodbc
 from customer import Customer
 from employee import employee
+from validator import Validator
+
+validator = Validator()
 
 class CustomerOrder:
 
@@ -71,9 +74,21 @@ class CustomerOrder:
         customer = Customer()
         customer.searchCustomerByName(cursor)
 
-        self.__customerOderDate = input("Please Enter the Date of Order Placed.")
-        self.__customerOrderDeliveryDate = input("Please Enter the Date of Order Delivered.")
-        self.__customerOrderSellingPrice = int(input("Please Enter the Selling Price."))
+        orderDate = input("Please Enter the Date of Order Placed.")
+        while not validator.dateValidate(orderDate):
+            orderDate = input("Please Enter the Date of Order Placed.")
+        self.__customerOderDate = orderDate
+
+        deliveryDate = input("Please Enter the Date of Order Delivered.")
+        while not validator.dateValidate(deliveryDate):
+            deliveryDate = input("Please Enter the Date of Order Delivered.")
+        self.__customerOrderDeliveryDate = deliveryDate
+
+        sellingPrice = input("Please Enter the Selling Price.")
+        while not validator.priceValidate(sellingPrice):
+            sellingPrice = input("Please Enter the Selling Price.")
+        self.__customerOrderSellingPrice = sellingPrice
+
         self.__customerId = input("Please Enter the above Customer Id.")
 
         emp = employee()
@@ -95,9 +110,22 @@ class CustomerOrder:
         customerOrder.searchOrderByCustomerId(cursor)
 
         self.__customerOderId = input("Please Enter the Customer Order Id which needs to be updated")
-        self.__customerOderDate = input("Please Enter the New or Same Date of Order Placed.")
-        self.__customerOrderDeliveryDate = input("Please Enter the New or Same Date of Order Delivered.")
-        self.__customerOrderSellingPrice = int(input("Please Enter the New or Same Selling Price."))
+
+        orderDate = input("Please Enter the New or Same Date of Order Placed.")
+        while not validator.dateValidate(orderDate):
+            orderDate = input("Please Enter the New or Same Date of Order Placed.")
+        self.__customerOderDate = orderDate
+
+        deliveryDate = input("Please Enter the New or Same Date of Order Delivered.")
+        while not validator.dateValidate(deliveryDate):
+            deliveryDate = input("Please Enter the New or Same Date of Order Delivered.")
+        self.__customerOrderDeliveryDate = deliveryDate
+
+        sellingPrice = input("Please Enter the New or Same Selling Price.")
+        while not validator.priceValidate(sellingPrice):
+            sellingPrice = input("Please Enter the New or Same Selling Price.")
+        self.__customerOrderSellingPrice = sellingPrice
+
         self.__customerId = input("Please Enter the New or Same Customer Id.")
 
         emp = employee()
@@ -108,9 +136,3 @@ class CustomerOrder:
         database.updateCustomerOrderRecord(self.__customerOderId,self.__customerOderDate,self.__customerOrderDeliveryDate,
                                            self.__customerOrderSellingPrice,self.__customerId,self.__employeeId)
         print("Customer Order Record Updated Successfully.!")
-
-
-
-
-
-

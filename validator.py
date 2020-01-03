@@ -1,4 +1,5 @@
 import re
+import datetime
 
 
 class Validator:
@@ -56,3 +57,33 @@ class Validator:
             else:
                 return userInput
                 break
+
+    def dateValidate(self,date):
+
+        if '' == date or 'null' == date:
+            print("Date Field can't be null or empty")
+            return False
+
+        if '' != date or 'null' != date:
+            try:
+                datetime.datetime.strptime(date, '%Y-%m-%d')
+            except ValueError:
+                print("Incorrect Date.!")
+                return False
+        if '' != date or 'null' != date:
+            return True
+
+    def priceValidate(self,price):
+
+        if '' == price or 'null' == price:
+            print("Price Field can't be null")
+            return False
+
+        if '' != price or 'null' != price:
+            try:
+                int(price)
+            except ValueError:
+                print("Incorrect Price Value.!")
+                return False
+        if '' != price or 'null' != price:
+            return True
