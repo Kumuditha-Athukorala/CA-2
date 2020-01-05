@@ -21,7 +21,7 @@ class manufacturer:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
     def selectBasedOnName(self, cursor):
        try:
@@ -42,7 +42,7 @@ class manufacturer:
                 print("No manufacturer found with that name.!")
 
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
     def addManufacturer(self, cursor):
 
@@ -78,7 +78,7 @@ class manufacturer:
             db.insertMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
             print("Record inserted successfully in Manufacturer table.!")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
 
 
@@ -131,7 +131,7 @@ class manufacturer:
             else:
                 print("No manufacturer found with that name.!")
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
 
 

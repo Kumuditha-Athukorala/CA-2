@@ -42,7 +42,7 @@ class employee:
             else:
                 print("No employee found with that name.!")
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
     def addEmployee(self, cursor):
       try:
@@ -87,7 +87,7 @@ class employee:
             db.insertEmp(self.employeeName, self.employeeDesignation, self.employeeDob, self.employeePps,self.employeeSalary,address)
             print("Record inserted successfully in Employee table.!")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
     def updateEmployee(self, cursor):
       try:
@@ -148,4 +148,4 @@ class employee:
         else:
             print("No employee found with that name.!")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")

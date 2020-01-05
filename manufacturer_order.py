@@ -19,7 +19,7 @@ class ManufacturerOrder:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>40s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), str(row[3])))
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
     def searchAllManufacturerOrdersWithModelAndManufacturer(self,cursor):
       try:
@@ -37,7 +37,7 @@ class ManufacturerOrder:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), row[3], row[4], row[5]))
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+          print ("Something went wrong.!! Contact the administrator.!")
 
     def addManufacturerOrderRecord(self,database,cursor):
        try:
@@ -47,7 +47,7 @@ class ManufacturerOrder:
             database.insertManufacturerOrderRecord(self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
             print("Manufacturer Order Record added Successfully")
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
 
     def updateManufacturerOrderRecord(self,database,cursor):
@@ -62,5 +62,5 @@ class ManufacturerOrder:
         database.updateManufacturerOrderRecord(self.__manufacturerOrderId, self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
         print("Manufacturer Order Record Updated Successfully")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 

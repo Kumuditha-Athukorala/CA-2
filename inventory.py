@@ -22,7 +22,7 @@ class Inventory:
                 print('{:<5s}{:>30s}{:>60s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]), str(row[4])))
 
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
 
     def addInventoryRecord(self, database, cursor):
@@ -34,7 +34,7 @@ class Inventory:
             database.insertInventoryrecord(self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
             print("Inventory Record added Successfully")
      except:
-         ("Something went wrong.!! Contact the administrator.!")
+         print("Something went wrong.!! Contact the administrator.!")
 
 
     def updateInventoryRecord(self, database, cursor):
@@ -50,7 +50,7 @@ class Inventory:
             database.updateInventoryRecord(self.__inventoryId, self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
             print("Inventory Record updated Successfully")
      except:
-         ("Something went wrong.!! Contact the administrator.!")
+         print("Something went wrong.!! Contact the administrator.!")
 
 
     def viewAvailableCars(self,database,cursor):
@@ -71,5 +71,5 @@ class Inventory:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>60s}{:>30s}{:>36s}{:>28s}'.format(str(row[0]), row[1], row[2], str(row[3]), row[4], row[6]))
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 

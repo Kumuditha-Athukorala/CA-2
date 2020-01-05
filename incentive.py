@@ -26,7 +26,7 @@ class incentive:
             else:
                 print("No incentive record present for last %i days"%days)
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
     def selectBasedOnName(self, cursor):
         try:
@@ -59,7 +59,7 @@ class incentive:
             else:
                     print("No employee found with that name.!")
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print  ("Something went wrong.!! Contact the administrator.!")
 
     def addIncentive(self, cursor):
         try:
@@ -86,4 +86,4 @@ class incentive:
             else:
                     print("No employee found with that name.!")
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print ("Something went wrong.!! Contact the administrator.!")

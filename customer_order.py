@@ -26,7 +26,7 @@ class CustomerOrder:
             for row in cursor:
                 print('{:<15s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),row[4], row[5]))
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print ("Something went wrong.!! Contact the administrator.!")
 
 
     def searchOrderByCustomerId(self,cursor):
@@ -50,7 +50,7 @@ class CustomerOrder:
                 print("No Customer Order with that Customer ID!")
 
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print ("Something went wrong.!! Contact the administrator.!")
 
 
     def searchOrderByEmpolyeeId(self,cursor):
@@ -74,7 +74,7 @@ class CustomerOrder:
                 print("No Customer Order with that Employee ID!")
 
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
 
     def addCustomerOrder(self, database, cursor):
@@ -108,7 +108,7 @@ class CustomerOrder:
                                           self.__customerId, self.__employeeId)
         print("Customer Order record added successfully..!")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+          print ("Something went wrong.!! Contact the administrator.!")
 
 
     def updateCustomerOrder(self,database, cursor):
@@ -147,4 +147,4 @@ class CustomerOrder:
                                                self.__customerOrderSellingPrice,self.__customerId,self.__employeeId)
             print("Customer Order Record Updated Successfully.!")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")

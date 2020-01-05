@@ -21,7 +21,7 @@ class Customer:
             for row in cursor:
                 print('{:>7s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[3]))
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print ("Something went wrong.!! Contact the administrator.!")
 
 
     def searchCustomerByName(self,cursor):
@@ -43,7 +43,7 @@ class Customer:
         else:
             print("No Customer found with that name.!")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
 
     def addCustomer(self, databse, cursor):
@@ -73,7 +73,7 @@ class Customer:
             print("Customer Record added successfully..!")
 
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print ("Something went wrong.!! Contact the administrator.!")
 
 
     def updateCustomer(self, database, cursor):
@@ -121,4 +121,4 @@ class Customer:
             else:
                 print("No Customer found with that name.!")
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")

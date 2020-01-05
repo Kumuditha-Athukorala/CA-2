@@ -26,7 +26,7 @@ class report:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>60s}'.format(str(row[0]), row[1], str(row[2])))
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
     def searchBySeats(self, cursor):
       try:
@@ -45,7 +45,7 @@ class report:
             else:
                 print("No such car model found")
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+          print ("Something went wrong.!! Contact the administrator.!")
 
 
     def getCustomerSpecificOrders(self,cursor):
@@ -66,7 +66,7 @@ class report:
                 print('{:<5s}{:>30s}{:>60s}{:>60s}{:>60s}{:>60s}{:>60s}{:>60s}'.format(str(row[0]), row[1], row[2] , row[3],
                         str(row[4]), row[5], row[6],str(row[7])))
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print ("Something went wrong.!! Contact the administrator.!")
 
 
     def updateEmployeeAddress(self, cursor):
@@ -87,7 +87,7 @@ class report:
                 print('{:<5s}{:>30s}{:>80s}'.format(str(row[0]), row[1], row[2]))
 
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print("Something went wrong.!! Contact the administrator.!")
 
     def getAvailableCars(self, cursor):
         try:
@@ -108,7 +108,7 @@ class report:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>60s}{:>30s}{:>36s}{:>28s}'.format(str(row[0]), row[1], row[2], str(row[3]), row[4], row[5]))
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print ("Something went wrong.!! Contact the administrator.!")
 
 
     def getSoldCars(self,cursor):
@@ -130,7 +130,7 @@ class report:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>60s}{:>30s}{:>36s}{:>28s}'.format(str(row[0]), row[1], row[2], str(row[3]), row[4], row[5]))
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
     def getOrderTaken(self,cursor):
       try:
@@ -144,7 +144,7 @@ class report:
         for row in cursor:
             print('{:<5s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2])))
       except:
-            ("Something went wrong.!! Contact the administrator.!")
+          print ("Something went wrong.!! Contact the administrator.!")
 
     def getOrderTakenDuringTwoDates(self,cursor):
         try:
@@ -159,4 +159,4 @@ class report:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>30s}'.format(str(row[0]), row[1], str(row[2])))
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print ("Something went wrong.!! Contact the administrator.!")

@@ -5,13 +5,13 @@ class dataBase:
 
     def __init__(self):
         try:
-            self.conn = pyodbc.connect('Driver={SQL Server};'
+           self.conn = pyodbc.connect('Driver={SQL Server};'
                              'Server=HP\\SQLEXPRESS;'
                               'Database=Over_Drive;'
                               'Trusted_Connection=yes;'
                               )
         except:
-            ("Something went wrong in database connection.!! Contact the administrator.!")
+            print("Something went wrong in database connection.!! Contact the administrator.!")
 
     def dbConn(self):
         try:

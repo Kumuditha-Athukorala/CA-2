@@ -21,7 +21,7 @@ class carmodel:
             for row in cursor:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]), str(row[4]),str(row[5])))
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print  ("Something went wrong.!! Contact the administrator.!")
     def searchByName(self, cursor):
          try:
             name = input("Enter name of model. !")
@@ -44,7 +44,7 @@ class carmodel:
             else:
                 print("No Car model found with that name.!")
          except:
-             ("Something went wrong.!! Contact the administrator.!")
+             print ("Something went wrong.!! Contact the administrator.!")
 
 
     def searchByMfg(self, cursor):
@@ -62,7 +62,7 @@ class carmodel:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),
                                                                          str(row[4]), str(row[5])))
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
     def searchByType(self,cursor):
 
@@ -81,7 +81,7 @@ class carmodel:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),
                                                                          str(row[4]), str(row[5])))
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print ("Something went wrong.!! Contact the administrator.!")
     def searchByBudget(self, cursor):
        try:
             args = int(input("Enter Customer Budget Limit."))
@@ -98,7 +98,7 @@ class carmodel:
                 print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),
                                                                          str(row[4]), str(row[5])))
        except:
-           ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
 
     def addCarModel(self, cursor):
         try:
@@ -153,7 +153,7 @@ class carmodel:
             else:
                 print("No manufacturer found with that name.!")
         except:
-            ("Something went wrong.!! Contact the administrator.!")
+            print ("Something went wrong.!! Contact the administrator.!")
 
 
 
