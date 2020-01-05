@@ -101,7 +101,7 @@ class carmodel:
            ("Something went wrong.!! Contact the administrator.!")
 
     def addCarModel(self, cursor):
-        
+
         try:
             name = input("Enter name of manufacturer. !")
             args = ['%' + name + '%']
