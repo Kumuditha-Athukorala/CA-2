@@ -12,85 +12,41 @@ class manufacturer:
         self.manufacturerPhno = ""
 
     def selectAllManufacturers (self, cursor):
-
-        cursor.execute('SELECT * FROM dbo.Manufacturer')
-        dash = '-' * 150
-        print(dash)
-        print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "phonenumber"))
-        print(dash)
-        for row in cursor:
-            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
+      try:
+            cursor.execute('SELECT * FROM dbo.Manufacturer')
+            dash = '-' * 150
+            print(dash)
+            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "phonenumber"))
+            print(dash)
+            for row in cursor:
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
+      except:
+            ("Something went wrong.!! Contact the administrator.!")
 
     def selectBasedOnName(self, cursor):
-        name = input("Enter name of manufacturer. !")
-        args = ['%' + name + '%']
+       try:
+            name = input("Enter name of manufacturer. !")
+            args = ['%' + name + '%']
 
-        cursor.execute('SELECT * FROM dbo.Manufacturer where manufacturer_name like ?', args)
-        dash = '-' * 150
-        data = cursor.fetchall()
+            cursor.execute('SELECT * FROM dbo.Manufacturer where manufacturer_name like ?', args)
+            dash = '-' * 150
+            data = cursor.fetchall()
 
-        if len(data) != 0:
-            print(dash)
-            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "Phone-number"))
-            print(dash)
-            for row in data:
-                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
-        else:
-            print("No manufacturer found with that name.!")
+            if len(data) != 0:
+                print(dash)
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "Phone-number"))
+                print(dash)
+                for row in data:
+                    print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
+            else:
+                print("No manufacturer found with that name.!")
+
+       except:
+           ("Something went wrong.!! Contact the administrator.!")
 
     def addManufacturer(self, cursor):
 
-        db = database()
-
-        self.manufacturerName = input("Enter name of manufacturer.")
-        mname = self.manufacturerName
-        while not validator.nameValidate(mname):
-            mname = input("Enter name of manufacturer.")
-        self.manufacturerName = mname
-
-        self.manufacturerAddr = input("Enter manufacturer's address.")
-        addr = self.manufacturerAddr
-        while not validator.addrValidate(addr):
-            addr = input("Enter manufacturer's address.")
-        self.manufacturerAddr = addr
-
-        self.manufacturerEmail = input("Enter manufacturer's email.")
-        addr = self.manufacturerEmail
-        while not validator.emailValidate(addr):
-            addr = input("Enter manufacturer's email.")
-        self.manufacturerEmail = addr
-
-        self.manufacturerPhno = input("Enter manufacturer's contact number.")
-        addr = self.manufacturerPhno
-        while not validator.numberValidate(addr):
-            addr = input("Enter manufacturer's contact number.")
-        self.manufacturerPhno = addr
-
-
-
-        db.insertMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
-        print("Record inserted successfully in Manufacturer table.!")
-
-
-
-    def updateManufacturer(self, cursor):
-
-        name = input("Enter name of manufacturer. !")
-        args = ['%' + name + '%']
-
-        cursor.execute('SELECT * FROM dbo.Manufacturer where manufacturer_name like ?', args)
-        dash = '-' * 150
-        data = cursor.fetchall()
-
-        if len(data) != 0:
-            print("Manufacturer found with name entered.! ")
-            print(dash)
-            print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "Phone-number"))
-            print(dash)
-            for row in data:
-                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
-            for row in data:
-                self.manufacturerId = row[0]
+      try:
             db = database()
 
             self.manufacturerName = input("Enter name of manufacturer.")
@@ -117,11 +73,65 @@ class manufacturer:
                 addr = input("Enter manufacturer's contact number.")
             self.manufacturerPhno = addr
 
-            db.updateMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno,self.manufacturerId)
-            print("Record updated successfully in Manufacturer table.!")
-        else:
-            print("No manufacturer found with that name.!")
 
+
+            db.insertMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
+            print("Record inserted successfully in Manufacturer table.!")
+      except:
+            ("Something went wrong.!! Contact the administrator.!")
+
+
+
+    def updateManufacturer(self, cursor):
+       try:
+            name = input("Enter name of manufacturer. !")
+            args = ['%' + name + '%']
+
+            cursor.execute('SELECT * FROM dbo.Manufacturer where manufacturer_name like ?', args)
+            dash = '-' * 150
+            data = cursor.fetchall()
+
+            if len(data) != 0:
+                print("Manufacturer found with name entered.! ")
+                print(dash)
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Location", "Email", "Phone-number"))
+                print(dash)
+                for row in data:
+                    print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[3], row[4]))
+                for row in data:
+                    self.manufacturerId = row[0]
+                db = database()
+
+                self.manufacturerName = input("Enter name of manufacturer.")
+                mname = self.manufacturerName
+                while not validator.nameValidate(mname):
+                    mname = input("Enter name of manufacturer.")
+                self.manufacturerName = mname
+
+                self.manufacturerAddr = input("Enter manufacturer's address.")
+                addr = self.manufacturerAddr
+                while not validator.addrValidate(addr):
+                    addr = input("Enter manufacturer's address.")
+                self.manufacturerAddr = addr
+
+                self.manufacturerEmail = input("Enter manufacturer's email.")
+                addr = self.manufacturerEmail
+                while not validator.emailValidate(addr):
+                    addr = input("Enter manufacturer's email.")
+                self.manufacturerEmail = addr
+
+                self.manufacturerPhno = input("Enter manufacturer's contact number.")
+                addr = self.manufacturerPhno
+                while not validator.numberValidate(addr):
+                    addr = input("Enter manufacturer's contact number.")
+                self.manufacturerPhno = addr
+
+                db.updateMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno,self.manufacturerId)
+                print("Record updated successfully in Manufacturer table.!")
+            else:
+                print("No manufacturer found with that name.!")
+       except:
+           ("Something went wrong.!! Contact the administrator.!")
 
 
 
