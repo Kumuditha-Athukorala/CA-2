@@ -1,4 +1,10 @@
 import pyodbc
+from validator import Validator
+from carmodel import carmodel
+from manufacturer_order import ManufacturerOrder
+from customer_order import CustomerOrder
+
+validator = Validator()
 
 
 class Inventory:
@@ -27,12 +33,33 @@ class Inventory:
 
     def addInventoryRecord(self, database, cursor):
      try:
-            self.__inventoryDate = input("Please Enter the Inventory Date")
-            self.__inventoryStatus = input("Please Enter the Inventory Status")
-            self.__manufacturerOrderId = input("Please Enter the Manufacturer Order Id")
-            self.__customerOrderId = input("Please Enter the Customer Order Id")
-            database.insertInventoryrecord(self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
-            print("Inventory Record added Successfully")
+
+         manufacturerOrder = ManufacturerOrder()
+         manufacturerOrder.searchAllManufactuererOrderRecords(cursor)
+
+         customerOrder = CustomerOrder()
+         customerOrder.serachAllCustomerOrders(cursor)
+
+         inventoryDate = input("Please Enter the Inventory Date")
+         while not validator.dateValidate(inventoryDate):
+             inventoryDate = input("Please Enter the Inventory Date")
+         self.__inventoryDate = inventoryDate
+
+         self.__inventoryStatus = input("Please Enter the Inventory Status")
+
+         orderId = input("Please Enter the Manufacturer Order Id")
+         while not validator.numberValidate(orderId):
+             orderId = input("Please Enter the Manufacturer Order Id")
+         self.__manufacturerOrderId = orderId
+
+         custOrderId = input("Please Enter the Customer Order Id")
+         while not validator.numberValidate(custOrderId):
+             custOrderId = input("Please Enter the Customer Order Id")
+         self.__customerOrderId = custOrderId
+
+         database.insertInventoryrecord(self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
+         print("Inventory Record added Successfully")
+
      except:
          print("Something went wrong.!! Contact the administrator.!")
 
@@ -42,11 +69,34 @@ class Inventory:
             inventory = Inventory()
             inventory.searchAllInvenrotyRecords(cursor)
 
-            self.__inventoryId = input("Please Enter the Inventory Id which needs to be updated")
-            self.__inventoryDate = input("Please Enter the New or Same Inventory Date")
+            inventoryId = input("Please Enter the Inventory Id which needs to be updated")
+            while not validator.numberValidate(inventoryId):
+                inventoryId = input("Please Enter the Inventory Id which needs to be updated")
+            self.__inventoryId = inventoryId
+
+            date = input("Please Enter the New or Same Inventory Date")
+            while not validator.dateValidate(date):
+                date = input("Please Enter the New or Same Inventory Date")
+            self.__inventoryDate = date
+
             self.__inventoryStatus = input("Please Enter the New or Same Inventory Status")
-            self.__manufacturerOrderId = input("Please Enter the New or Same Manufacture Order Id")
-            self.__customerOrderId = input("Please Enter the New or Same Customer Order Id")
+
+            manufacturerOrder = ManufacturerOrder()
+            manufacturerOrder.searchAllManufactuererOrderRecords(cursor)
+
+            manuOrderId = input("Please Enter the New or Same Manufacture Order Id")
+            while not validator.numberValidate(manuOrderId):
+                manuOrderId = input("Please Enter the New or Same Manufacture Order Id")
+            self.__manufacturerOrderId = manuOrderId
+
+            customerOrder = CustomerOrder()
+            customerOrder.serachAllCustomerOrders(cursor)
+
+            custOrderId = input("Please Enter the New or Same Customer Order Id")
+            while not validator.numberValidate(custOrderId):
+                custOrderId = input("Please Enter the New or Same Customer Order Id")
+            self.__customerOrderId = custOrderId
+
             database.updateInventoryRecord(self.__inventoryId, self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
             print("Inventory Record updated Successfully")
      except:

@@ -6,20 +6,32 @@ The reports generated for the car dealer includes sales reports of indemand cars
 
 
 
-Functional Requirements
+Requirements of the Over Drive Information System.
+Functional Requirements-
+•	User should be able to see available car models.
+•	User should be able to add new car model.
+•	User should be able to update car model details.
+•	User should be able to see car manufacturers.
+•	User should be able to add manufacturers.
+•	User should be able to update manufacturers.
+•	User should be able to add records of employees.
+•	User should be able to update the records of employees.
+•	User should be able to view all the employees.
+•	User should be able to see brand-new cars available presently at the dealers shop.
+•	User should be able to update car model details.
+•	User to generate performance reports of employees. (since beginning ).
+•	User to generate performance reports of employees. (Between two dates).
+•	User should be able to add incentive (bonus) to the employees.
+•	User should be able to add, update the inventory of the dealers.
+•	User should be able to see car customer who have purchased from the dealers.
+•	User should be able to add new customers.
+•	User should be able to update the existing customer details.
+•	User should be able to search car based on number of seats.
+•	User should be able to get details about the car already sold by the dealer
+•	User should be able to get details about the car which is unsold with the dealer 
 
-1. Dealer should be able to see available car models.
-2. Dealer should be able to add new car model.
-3. Dealer should be able to see car brands.
-4. Dealer shuold be able to add new car brand.
-5. Dealer should be able to see brand-new cars available at any moment.
-6. Dealer should be able to see used car avalable at any moment.
-7. Dealer shoul be able to update car details.
-8. Ability to generate slaes reports.(weekly, monthly).
-
-Non-Functinal Requirements
-
-1. Ability to create back-up tables(history tables).
+Non-Functional Requirements
+•	The system should be able to create a backup table for all Customer orders (history tables).
 
 
 

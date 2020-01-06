@@ -1,4 +1,8 @@
 import pyodbc
+from validator import Validator
+from carmodel import carmodel
+
+validator = Validator()
 
 class ManufacturerOrder:
 
@@ -41,11 +45,24 @@ class ManufacturerOrder:
 
     def addManufacturerOrderRecord(self,database,cursor):
        try:
-            self.__manufacturerOrderDate = input("Please Enter the Manufacturer Order Date")
-            self.__manufacturerOrderPrice = input("Please Enter the Manufacturer Order Price")
-            self.__carModelId = input("Please Enter the Car Model Id")
-            database.insertManufacturerOrderRecord(self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
-            print("Manufacturer Order Record added Successfully")
+           orderDate = input("Please Enter the Manufacturer Order Date")
+           while not validator.dateValidate(orderDate):
+               orderDate = input("Please Enter the Manufacturer Order Date")
+           self.__manufacturerOrderDate = orderDate
+
+           orderPrice = input("Please Enter the Manufacturer Order Price")
+           while not validator.priceValidate(orderPrice):
+               orderPrice = input("Please Enter the Manufacturer Order Price")
+           self.__manufacturerOrderPrice = orderPrice
+
+           modelId = input("Please Enter the Car Model Id")
+           while not validator.numberValidate(modelId):
+               modelId = input("Please Enter the Car Model Id")
+           self.__carModelId = modelId
+
+           database.insertManufacturerOrderRecord(self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
+           print("Manufacturer Order Record added Successfully")
+
        except:
            print("Something went wrong.!! Contact the administrator.!")
 
@@ -55,10 +72,26 @@ class ManufacturerOrder:
         manufacturerOrder = ManufacturerOrder()
         manufacturerOrder.searchAllManufactuererOrderRecords(cursor)
 
-        self.__manufacturerOrderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
-        self.__manufacturerOrderDate = input("Please Enter the New or Same Manufacturer Order Date")
-        self.__manufacturerOrderPrice = input("Please Enter the New or Same Manufacturer Order Price")
-        self.__carModelId = input("Please Enter the New or Same Car Model Id")
+        orderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
+        while not validator.numberValidate(orderId):
+            orderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
+        self.__manufacturerOrderId = orderId
+
+        orderDate = input("Please Enter the New or Same Manufacturer Order Date")
+        while not validator.dateValidate(orderDate):
+            orderDate = input("Please Enter the New or Same Manufacturer Order Date")
+        self.__manufacturerOrderDate = orderDate
+
+        orderPrice = input("Please Enter the New or Same Manufacturer Order Price")
+        while not validator.priceValidate(orderPrice):
+            orderPrice = input("Please Enter the New or Same Manufacturer Order Price")
+        self.__manufacturerOrderPrice =orderPrice
+
+        modelId = input("Please Enter the New or Same Car Model Id")
+        while not validator.numberValidate(modelId):
+            modelId = input("Please Enter the New or Same Car Model Id")
+        self.__carModelId = modelId
+        
         database.updateManufacturerOrderRecord(self.__manufacturerOrderId, self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
         print("Manufacturer Order Record Updated Successfully")
       except:
