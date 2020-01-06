@@ -106,7 +106,7 @@ class ManufacturerOrder:
 
            database.updateManufacturerOrderRecord(self.__manufacturerOrderId, self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
            print("Manufacturer Order Record Updated Successfully")
-      
+
       except:
             print("Something went wrong.!! Contact the administrator.!")
 
