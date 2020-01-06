@@ -77,31 +77,37 @@ class ManufacturerOrder:
        print('{:<5s}{:>30s}{:>40s}{:>30s}'.format("Order Id", "Manufacturer Order Date", "Manufacturer Order Price",
                                                   "Car Model Id"))
        print(dash)
-       for row in cursor:
-           print('{:<5s}{:>30s}{:>40s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), str(row[3])))
 
-       orderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
-       while not validator.numberValidate(orderId):
-            orderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
-       self.__manufacturerOrderId = orderId
+       resultSet = cursor.fetchall()
 
-       orderDate = input("Please Enter the New or Same Manufacturer Order Date")
-       while not validator.dateValidate(orderDate):
-            orderDate = input("Please Enter the New or Same Manufacturer Order Date")
-       self.__manufacturerOrderDate = orderDate
+       if (len(resultSet) != 0):
+           for row in resultSet:
+               print('{:<5s}{:>30s}{:>40s}{:>30s}'.format(str(row[0]), row[1], str(row[2]), str(row[3])))
 
-       orderPrice = input("Please Enter the New or Same Manufacturer Order Price")
-       while not validator.priceValidate(orderPrice):
-            orderPrice = input("Please Enter the New or Same Manufacturer Order Price")
-       self.__manufacturerOrderPrice =orderPrice
+           orderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
+           while not validator.numberValidate(orderId):
+                orderId = input("Please Enter the Manufacturer Order Id which needs to be updated")
+           self.__manufacturerOrderId = orderId
 
-       modelId = input("Please Enter the New or Same Car Model Id")
-       while not validator.numberValidate(modelId):
-            modelId = input("Please Enter the New or Same Car Model Id")
-       self.__carModelId = modelId
-        
-       database.updateManufacturerOrderRecord(self.__manufacturerOrderId, self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
-       print("Manufacturer Order Record Updated Successfully")
+           orderDate = input("Please Enter the New or Same Manufacturer Order Date")
+           while not validator.dateValidate(orderDate):
+                orderDate = input("Please Enter the New or Same Manufacturer Order Date")
+           self.__manufacturerOrderDate = orderDate
+
+           orderPrice = input("Please Enter the New or Same Manufacturer Order Price")
+           while not validator.priceValidate(orderPrice):
+                orderPrice = input("Please Enter the New or Same Manufacturer Order Price")
+           self.__manufacturerOrderPrice =orderPrice
+
+           modelId = input("Please Enter the New or Same Car Model Id")
+           while not validator.numberValidate(modelId):
+                modelId = input("Please Enter the New or Same Car Model Id")
+           self.__carModelId = modelId
+
+           database.updateManufacturerOrderRecord(self.__manufacturerOrderId, self.__manufacturerOrderDate, self.__manufacturerOrderPrice, self.__carModelId)
+           print("Manufacturer Order Record Updated Successfully")
+       else:
+           print("No such manufacturer id in table")
       except:
             print("Something went wrong.!! Contact the administrator.!")
 
