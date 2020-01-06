@@ -73,8 +73,6 @@ class manufacturer:
                 addr = input("Enter manufacturer's contact number.")
             self.manufacturerPhno = addr
 
-
-
             db.insertMf(self.manufacturerName, self.manufacturerAddr, self.manufacturerEmail, self.manufacturerPhno)
             print("Record inserted successfully in Manufacturer table.!")
       except:

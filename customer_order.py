@@ -32,47 +32,85 @@ class CustomerOrder:
     def searchOrderByCustomerId(self,cursor):
        try:
             customer = Customer()
-            customer.searchCustomerByName(cursor)
+           #   customer.searchCustomerByName(cursor)
 
-            customerId = input("Please enter the Customer Id")
-            sql =  'SELECT * FROM Customer_Order co WHERE co.customer_id =?'
-            cursor.execute(sql,customerId)
+            name = input("Please enter the Customer Name")
+            args = ['%' + name + '%']
+            sql = 'SELECT c.customer_id, c.customer_name, c.customer_phone FROM Customer c WHERE c.customer_name LIKE ?'
+            cursor.execute(sql, args)
             resultSet = cursor.fetchall()
 
-            if(len(resultSet) != 0):
-                dash = '-'*175
+            if (len(resultSet) != 0):
+                dash = '-' * 75
                 print(dash)
-                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Customer Order Id", "Order Date", "Order Delivery Date", "Selling Price","Customer Id", "Employee Id" ))
+                print('{:>7s}{:>30s}{:>35s}'.format("Id", "Name", "Phone Number"))
                 print(dash)
                 for row in resultSet:
-                    print('{:<15s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),row[4], row[5]))
-            else:
-                print("No Customer Order with that Customer ID!")
+                    print('{:>7s}{:>30s}{:>30s}'.format(row[0], row[1], row[2]))
+                customerId = input("Please enter the Customer Id")
+                sql = 'SELECT * FROM Customer_Order co WHERE co.customer_id =?'
+                cursor.execute(sql, customerId)
+                resultSet = cursor.fetchall()
 
+                if (len(resultSet) != 0):
+                    dash = '-' * 175
+                    print(dash)
+                    print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Customer Order Id", "Order Date",
+                                                                             "Order Delivery Date", "Selling Price",
+                                                                             "Customer Id", "Employee Id"))
+                    print(dash)
+                    for row in resultSet:
+                        print('{:<15s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2],
+                                                                                  str(row[3]), row[4], row[5]))
+                else:
+                    print("No Customer Order with that Customer ID!")
+            else:
+                print("No Customer found with that name.!")
        except:
-           print ("Something went wrong.!! Contact the administrator.!")
+           print("Something went wrong.!! Contact the administrator.!")
+
 
 
     def searchOrderByEmpolyeeId(self,cursor):
         try:
-            emp = employee()
-            emp.selectBasedOnName(cursor)
+         #   emp = employee()
+         #   emp.selectBasedOnName(cursor)
 
-            employeeId = input("Please enter the Employee Id")
-            sql =  'SELECT * FROM Customer_Order co WHERE co.employee_id =?'
-            cursor.execute(sql,employeeId)
-            resultSet = cursor.fetchall()
+            name = input("Enter name of employee. !")
+            args = ['%' + name + '%']
 
-            if(len(resultSet) != 0):
-                dash = '-'*175
+            cursor.execute('SELECT * FROM dbo.Employee where employee_name like ?', args)
+            dash = '-' * 180
+            data = cursor.fetchall()
+
+            if len(data) != 0:
                 print(dash)
-                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Customer Order Id", "Order Date", "Order Delivery Date", "Selling Price","Customer Id", "Employee Id" ))
+                print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Id", "Name", "Designation", "DOB", "PPS",
+                                                                         "Salary"))
                 print(dash)
-                for row in resultSet:
-                    print('{:<15s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),row[4], row[5]))
+                for row in data:
+                    print(
+                        '{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], row[4], row[5],
+                                                                           str(row[6])))
+                employeeId = input("Please enter the Employee Id")
+                sql = 'SELECT * FROM Customer_Order co WHERE co.employee_id =?'
+                cursor.execute(sql, employeeId)
+                resultSet = cursor.fetchall()
+
+                if (len(resultSet) != 0):
+                    dash = '-' * 175
+                    print(dash)
+                    print('{:<5s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format("Customer Order Id", "Order Date",
+                                                                             "Order Delivery Date", "Selling Price",
+                                                                             "Customer Id", "Employee Id"))
+                    print(dash)
+                    for row in resultSet:
+                        print('{:<15s}{:>30s}{:>30s}{:>30s}{:>30s}{:>30s}'.format(str(row[0]), row[1], row[2], str(row[3]),
+                                                                                  row[4], row[5]))
+                else:
+                    print("No Customer Order with that Employee ID!")
             else:
-                print("No Customer Order with that Employee ID!")
-
+                print("No employee found with that name!")
         except:
             print("Something went wrong.!! Contact the administrator.!")
 

@@ -21,7 +21,7 @@ class dataBase:
             ("Something went wrong in database connection.!! Contact the administrator.!")
 
 
-    def insertMf(self, name, addr, eid, phone,id):
+    def insertMf(self, name, addr, eid, phone):
 
         with self.conn as cursor:
             cursor.execute('insert into dbo.manufacturer (manufacturer_id,manufacturer_name,manufacturer_address,'
