@@ -117,34 +117,52 @@ class CustomerOrder:
 
     def addCustomerOrder(self, database, cursor):
       try:
-        customer = Customer()
-        customer.searchCustomerByName(cursor)
+        # customer = Customer()
+        #customer.searchCustomerByName(cursor)
 
-        orderDate = input("Please Enter the Date of Order Placed.")
-        while not validator.dateValidate(orderDate):
+        name = input("Please enter the Customer Name")
+        args = ['%' + name + '%']
+        sql = 'SELECT c.customer_id, c.customer_name, c.customer_phone FROM Customer c WHERE c.customer_name LIKE ?'
+        cursor.execute(sql, args)
+        resultSet = cursor.fetchall()
+
+        if (len(resultSet) != 0):
+            dash = '-' * 75
+            print(dash)
+            print('{:>7s}{:>30s}{:>35s}'.format("Id", "Name", "Phone Number"))
+            print(dash)
+            for row in resultSet:
+                print('{:>7s}{:>30s}{:>30s}'.format(row[0], row[1], row[2]))
             orderDate = input("Please Enter the Date of Order Placed.")
-        self.__customerOderDate = orderDate
+            while not validator.dateValidate(orderDate):
+                orderDate = input("Please Enter the Date of Order Placed.")
+            self.__customerOderDate = orderDate
 
-        deliveryDate = input("Please Enter the Date of Order Delivered.")
-        while not validator.dateValidate(deliveryDate):
             deliveryDate = input("Please Enter the Date of Order Delivered.")
-        self.__customerOrderDeliveryDate = deliveryDate
+            while not validator.dateValidate(deliveryDate):
+                deliveryDate = input("Please Enter the Date of Order Delivered.")
+            self.__customerOrderDeliveryDate = deliveryDate
 
-        sellingPrice = input("Please Enter the Selling Price.")
-        while not validator.priceValidate(sellingPrice):
             sellingPrice = input("Please Enter the Selling Price.")
-        self.__customerOrderSellingPrice = sellingPrice
+            while not validator.priceValidate(sellingPrice):
+                sellingPrice = input("Please Enter the Selling Price.")
+            self.__customerOrderSellingPrice = sellingPrice
 
-        self.__customerId = input("Please Enter the above Customer Id.")
+            self.__customerId = input("Please Enter the above Customer Id.")
 
-        emp = employee()
-        emp.selectAllEmployees(cursor)
+            emp = employee()
+            emp.selectAllEmployees(cursor)
 
-        self.__employeeId = input("Please Enter the Employee Id from the above list")
+            self.__employeeId = input("Please Enter the Employee Id from the above list")
 
-        database.insertCustomerOrderRecord(self.__customerOderDate, self.__customerOrderDeliveryDate, self.__customerOrderSellingPrice,
-                                          self.__customerId, self.__employeeId)
-        print("Customer Order record added successfully..!")
+            database.insertCustomerOrderRecord(self.__customerOderDate, self.__customerOrderDeliveryDate,
+                                               self.__customerOrderSellingPrice,
+                                               self.__customerId, self.__employeeId)
+            print("Customer Order record added successfully..!")
+
+        else:
+            print("No Customer found with that name.!")
+
       except:
           print ("Something went wrong.!! Contact the administrator.!")
 
