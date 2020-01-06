@@ -104,6 +104,10 @@ class dataBase:
             return False
 
     def updateInventoryRecord(self, id, date, status,manufacturerOrder, customerOrder):
+        db = dataBase()
+        if (db.OR(customerOrder)):
+            customerOrder = None
+
         with self.conn as cursor:
             sql = 'UPDATE dbo.Inventory SET inventory_date=?,inventory_status=?, ' \
                   'manufacturer_order_id=?, customer_order_id=? WHERE inventory_id=? ';

@@ -52,10 +52,7 @@ class Inventory:
              orderId = input("Please Enter the Manufacturer Order Id")
          self.__manufacturerOrderId = orderId
 
-         custOrderId = input("Please Enter the Customer Order Id")
-         while not validator.numberValidate(custOrderId):
-             custOrderId = input("Please Enter the Customer Order Id")
-         self.__customerOrderId = custOrderId
+         self.__customerOrderId = input("Please Enter the Customer Order Id")
 
          database.insertInventoryrecord(self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
          print("Inventory Record added Successfully")
@@ -92,10 +89,8 @@ class Inventory:
             customerOrder = CustomerOrder()
             customerOrder.serachAllCustomerOrders(cursor)
 
-            custOrderId = input("Please Enter the New or Same Customer Order Id")
-            while not validator.numberValidate(custOrderId):
-                custOrderId = input("Please Enter the New or Same Customer Order Id")
-            self.__customerOrderId = custOrderId
+
+            self.__customerOrderId = input("Please Enter the New or Same Customer Order Id")
 
             database.updateInventoryRecord(self.__inventoryId, self.__inventoryDate, self.__inventoryStatus, self.__manufacturerOrderId, self.__customerOrderId)
             print("Inventory Record updated Successfully")
