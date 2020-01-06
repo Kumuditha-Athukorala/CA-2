@@ -88,7 +88,7 @@ while will == "yes":
 
         if c == 3:
             print("Choose Customer related option")
-            print("1. Search All Cutomers")
+            print("1. Search All Customers")
             print("2. Search Customers by Name")
             print("3. Add New Customer")
             print("4. Update Customer Record")
@@ -105,7 +105,7 @@ while will == "yes":
 
         if c == 4:
             print("Choose Customer Order related option")
-            print("1. Search All Cutomer Orders")
+            print("1. Search All Customer Orders")
             print("2. Search Customer Orders by Customer Id")
             print("3. Search Customer Orders by Related Employee Id")
             print("4. Add New Customer Order Record")
@@ -396,7 +396,7 @@ while will == "yes":
             print("2. Search Customer Orders by Customer Id")
             print("3. Search Customer Orders by Related Employee Id")
             print("4. Add New Customer Order Record")
-            print("5. Update Customer Order Record")
+          #  print("5. Update Customer Order Record")
             userInput = int(input("Please Enter the selected option"))
 
             if (userInput == 1):
@@ -407,8 +407,8 @@ while will == "yes":
                 customerOrder.searchOrderByEmpolyeeId(cursor)
             if (userInput == 4):
                 customerOrder.addCustomerOrder(dbobj, cursor)
-            if (userInput == 5):
-                customerOrder.updateCustomerOrder(dbobj, cursor)
+          #  if (userInput == 5):
+           #     customerOrder.updateCustomerOrder(dbobj, cursor)
 
         if c == 5:
             print("Choose Option:")
