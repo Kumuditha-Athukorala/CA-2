@@ -251,7 +251,7 @@ while will == "yes":
             print("3. Search Customer Orders by Related Employee Id")
             print("4. Add New Customer Order Record")
          #   print("5. Update Customer Order Record")
-          #  userInput = int(input("Please Enter the selected option"))
+            userInput = int(input("Please Enter the selected option"))
 
             if (userInput == 1):
                 customerOrder.serachAllCustomerOrders(cursor)
